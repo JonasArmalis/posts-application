@@ -1,5 +1,5 @@
 import AuthorsPage from '@/components/views/AuthorsPage.vue'
-import PostDetailPage from '@/components/views/PostDetailPage.vue'
+import PostDetailsPage from '@/components/views/PostDetailsPage.vue'
 import PostsPage from '@/components/views/PostsPage.vue'
 import UserLoginPage from '@/components/views/UserLoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -14,9 +14,10 @@ const router = createRouter({
       component: PostsPage
     },
     {
-      path: '/post-details',
+      path: '/posts/:id',
       name: 'post detail page',
-      component: PostDetailPage
+      component: PostDetailsPage,
+      props: true
     },
     {
       path: '/authors',
