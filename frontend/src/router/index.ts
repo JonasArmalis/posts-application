@@ -9,6 +9,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      alias: ['/posts'],
       name: 'home',
       component: PostsPage
     },
