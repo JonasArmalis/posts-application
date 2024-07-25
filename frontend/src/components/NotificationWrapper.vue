@@ -9,9 +9,7 @@ const { state } = storeToRefs(notifyStore);
 </script>
 
 <template>
-    <div>
-        <div v-for="notification in state.notifications" :key="notification.notifyTime">
-            <NotificationPopup :notification="notification" />
-        </div>
+    <div v-for="notification in state.notifications" :key="notification.notifyTime">
+        <NotificationPopup :notification="notification" />
     </div>
 </template>
