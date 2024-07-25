@@ -4,9 +4,9 @@
 <template>
     <nav class="navbar is-link" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item">
+            <RouterLink to="/" class="navbar-item">
                 <img src="/logo.svg" alt="Logo">
-            </a>
+            </RouterLink>
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
