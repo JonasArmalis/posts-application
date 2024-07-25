@@ -12,8 +12,17 @@ const router = createRouter({
       path: '/posts',
       alias: ['/'],
       children: [
-        { path: '', name: 'posts page', component: PostsPage },
-        { path: 'posts/:id', name: 'post details page', component: PostDetailsPage, props: true }
+        { 
+          path: '',
+          name: 'posts page',
+          component: PostsPage
+        },
+        { 
+          path: 'posts/:id',
+          name: 'post details page',
+          component: PostDetailsPage,
+          props: true
+        }
       ]
     },
     {

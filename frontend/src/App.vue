@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import WelcomeHeader from './components/WelcomeHeader.vue';
+import { RouterView } from 'vue-router';
 import NavigationBar from './components/NavigationBar.vue';
+
+import NotificationWrapper from './components/NotificationWrapper.vue';
+
 </script>
 
 <template>
   <header>
-    <WelcomeHeader/>
-    <NavigationBar/>
+    <NavigationBar />
   </header>
   <RouterView />
+  <NotificationWrapper/>
 
 
 </template>
@@ -19,6 +21,4 @@ header {
   line-height: 1.5;
   max-height: 100vh;
 }
-
-
 </style>
