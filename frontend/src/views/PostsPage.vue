@@ -1,8 +1,8 @@
 <script setup lang="ts">
+
+import PostWrapper from '@/components/PostWrapper.vue';
 </script>
 
 <template>
-  <main>
-    <h1>Post page</h1>
-  </main>
+  <PostWrapper/>
 </template>

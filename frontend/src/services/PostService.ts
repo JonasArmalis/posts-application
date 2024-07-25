@@ -4,7 +4,7 @@ import type { Post } from '../interfaces/Post'
 const END_POINT = '/posts'
 
 const getAllPosts = async (): Promise<Post[]> => {
-  const response = await httpClient.get<Post[]>(END_POINT)
+  const response = await httpClient.get<Post[]>(END_POINT + '?_expand=author')
   return response.data
 }
 
