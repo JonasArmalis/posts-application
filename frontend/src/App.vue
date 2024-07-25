@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 import WelcomeHeader from './components/WelcomeHeader.vue';
 import NavigationBar from './components/NavigationBar.vue';
 import { storeToRefs } from 'pinia';
@@ -13,7 +13,7 @@ const { notifications } = storeToRefs(notifyStore);
 
 
 function show() {
-  notifyStore.notify("it worked!", NotificationType.SUCCESS);
+  notifyStore.notify("Heyoo!", NotificationType.SUCCESS);
 }
 
 </script>

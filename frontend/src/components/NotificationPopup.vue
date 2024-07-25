@@ -1,18 +1,29 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, onMounted } from 'vue';
 import type { Notification } from '../interfaces/Notification';
 import { useNotifyStore } from '../stores/notification.store';
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css';
 
-defineProps<{ notification: Notification }>();
+const props = defineProps<{ notification: Notification }>();
 
 const notifyStore = useNotifyStore();
+
+const toast = () => {
+    createToast(props.notification.message, {
+        type: props.notification.type, // Assuming 'type' is part of the notification object
+        showIcon: true,
+        timeout: 4000,
+        onClose: () => notifyStore.removeNotification(props.notification),
+    });
+};
+
+onMounted(() => {
+    toast();
+});
 </script>
 
 <template>
-    <div :class="notification.type">
-        <button @click.prevent="notifyStore.removeNotification(notification)" type="button" aria-label="Close">
-            <span>Close</span>
-        </button>
-        <span>&nbsp;{{notification.message }}</span>
+    <div>
     </div>
 </template>

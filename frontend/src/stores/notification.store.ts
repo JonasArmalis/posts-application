@@ -13,9 +13,7 @@ export const useNotifyStore = defineStore('notify', {
       if (typeof messageOrError === 'string') message = messageOrError
       const notification: Notification = { message, type, notifyTime: Date.now() }
       this.notifications.push(notification)
-      setTimeout(() => {
-        this.removeNotification(notification)
-      }, 5000)
+
     },
     removeNotification(notification: Notification) {
       this.notifications = this.notifications.filter(
