@@ -6,23 +6,19 @@ import { storeToRefs } from 'pinia';
 import { useNotifyStore } from './stores/notification.store';
 import NotificationPopup from './components/NotificationPopup.vue';
 
-
 const notifyStore = useNotifyStore();
-const { notifications } = storeToRefs(notifyStore);
-
-
+const { state } = storeToRefs(notifyStore);
 </script>
 
 <template>
   <header>
     <WelcomeHeader />
     <NavigationBar />
-
   </header>
   <RouterView />
 
   <div>
-    <div v-for="notification in notifications" :key="notification.notifyTime">
+    <div v-for="notification in state.notifications" :key="notification.notifyTime">
       <NotificationPopup :notification="notification" />
     </div>
   </div>
