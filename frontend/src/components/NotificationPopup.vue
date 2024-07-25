@@ -11,7 +11,7 @@ const notifyStore = useNotifyStore();
 
 const toast = () => {
     createToast(props.notification.message, {
-        type: props.notification.type, // Assuming 'type' is part of the notification object
+        type: props.notification.type, 
         showIcon: true,
         timeout: 4000,
         onClose: () => notifyStore.removeNotification(props.notification),

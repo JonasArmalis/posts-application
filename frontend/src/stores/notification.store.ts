@@ -8,10 +8,7 @@ export const useNotifyStore = defineStore('notify', () => {
     notifications: [] as Notification[]
   })
 
-  function notify(messageOrError: unknown, type: NotificationType) {
-    let message = ''
-    if (messageOrError instanceof Error) message = messageOrError.message
-    if (typeof messageOrError === 'string') message = messageOrError
+  function notify(message: string, type: NotificationType) {
     const notification: Notification = { message, type, notifyTime: Date.now() }
     state.notifications.push(notification)
   }
@@ -21,15 +18,15 @@ export const useNotifyStore = defineStore('notify', () => {
       (n) => n.notifyTime !== notification.notifyTime
     )
   }
-  
+
   function notifyDefault(message: string) {
     notify(message, NotificationType.DEFAULT)
   }
-  
+
   function notifyInfo(message: string) {
     notify(message, NotificationType.INFO)
   }
-  
+
   function notifySuccess(message: string) {
     notify(message, NotificationType.SUCCESS)
   }
@@ -37,11 +34,10 @@ export const useNotifyStore = defineStore('notify', () => {
   function notifyWarning(message: string) {
     notify(message, NotificationType.WARNING)
   }
-  
-  function notifyError (message: string) {
-    notify(message, NotificationType.ERROR);
-  }
 
+  function notifyError(message: string) {
+    notify(message, NotificationType.ERROR)
+  }
 
   return {
     state,
