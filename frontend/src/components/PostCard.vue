@@ -12,7 +12,6 @@ const displayDate = props.post.updated_at >= props.post.created_at
     ? props.post.updated_at
     : props.post.created_at;
 
-
 const redirectToPost = () => {
     router.push({ path: `/posts/${props.post.id}` });
 };
@@ -26,8 +25,7 @@ const redirectToPost = () => {
                 <div class="media">
                     <div class="media-content">
                         <p class="title is-4">{{ props.post.title }}</p>
-                        <p class="subtitle is-6"> Posted by: {{ props.post.author.name }} {{ props.post.author.surname
-                            }}</p>
+                        <p class="subtitle is-6"> Posted by: {{ props.post.author.name }} {{ props.post.author.surname }}</p>
                     </div>
                 </div>
 
