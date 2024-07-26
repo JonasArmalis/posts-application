@@ -4,6 +4,7 @@ import type { Author } from '@/interfaces/Author';
 import { getAllAuthors } from '../services/AuthorService';
 import AuthorCard from './AuthorCard.vue';
 import { useNotifyStore } from '@/stores/notification.store';
+import PaginationMenu from './PaginationMenu.vue';
 
 const notifyStore = useNotifyStore();
 
@@ -27,5 +28,6 @@ onMounted(fetchAuthors);
         <div v-for="author in authors" :key="author.id">
             <AuthorCard :author="author" />
         </div>
+        <!-- <PaginationMenu /> -->
     </div>
 </template>
