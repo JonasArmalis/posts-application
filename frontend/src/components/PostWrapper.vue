@@ -23,7 +23,9 @@ onMounted(fetchPosts);
 </script>
 
 <template>
-    <div v-for="post in posts" :key="post.id">
-        <PostCard :post="post" />
+    <div>
+        <div v-for="post in posts" :key="post.id">
+            <PostCard :post="post" />
+        </div>
     </div>
 </template>
