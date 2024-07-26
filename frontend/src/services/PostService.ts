@@ -8,8 +8,8 @@ const getAllPosts = async (): Promise<Post[]> => {
   return response.data
 }
 
-const getPost = async (id: number): Promise<Post> => {
-  const response = await httpClient.get<Post>(`${END_POINT}/${id}`)
+const getPost = async (id: Number): Promise<Post> => {
+  const response = await httpClient.get<Post>(`${END_POINT}/${id}?_expand=author`)
   return response.data
 }
 

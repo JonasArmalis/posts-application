@@ -14,12 +14,12 @@ const router = createRouter({
       children: [
         { 
           path: '',
-          name: 'posts page',
+          name: 'posts',
           component: PostsPage
         },
         { 
           path: 'posts/:id',
-          name: 'post details page',
+          name: 'post-details',
           component: PostDetailsPage,
           props: true
         }
@@ -27,12 +27,12 @@ const router = createRouter({
     },
     {
       path: '/authors',
-      name: 'author page',
+      name: 'authors',
       component: AuthorsPage
     },
     {
       path: '/login',
-      name: 'user login page',
+      name: 'login',
       component: UserLoginPage
     },
     {
