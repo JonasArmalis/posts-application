@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import AuthorWrapper from '@/components/AuthorWrapper.vue';
 </script>
 
 <template>
-    <main>
-        <h1>Authors page</h1>
-    </main>
+    <AuthorWrapper />
 </template>
