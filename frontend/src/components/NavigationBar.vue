@@ -4,13 +4,13 @@
 <template>
     <nav class="navbar is-link" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item">
+            <RouterLink to="/posts" class="navbar-item">
                 <img src="/logo.svg" alt="Logo">
-            </a>
+            </RouterLink>
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
-                <RouterLink class="navbar-item" to="/">Posts</RouterLink>
+                <RouterLink class="navbar-item" to="/posts">Posts</RouterLink>
                 <RouterLink class="navbar-item" to="/authors">Authors</RouterLink>
             </div>
             <div class="navbar-end">
