@@ -23,7 +23,9 @@ onMounted(fetchAuthors);
 </script>
 
 <template>
-    <div v-for="author in authors" :key="author.id">
-        <AuthorCard :author="author" />
+    <div>
+        <div v-for="author in authors" :key="author.id">
+            <AuthorCard :author="author" />
+        </div>
     </div>
 </template>
