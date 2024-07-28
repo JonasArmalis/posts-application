@@ -7,19 +7,27 @@ import { useNotifyStore } from '@/stores/notification.store';
 import PaginationMenu from './PaginationMenu.vue';
 
 const notifyStore = useNotifyStore();
-
-
+const limit = 5;
+const currentPage = ref<number>(1);
 const authors = ref<Author[]>([]);
+const authorAmount = ref<number>();
 
-const fetchAuthors = async () => {
+const fetchAuthors = async (page: number) => {
     try {
-        authors.value = await getAllAuthors();
+        const { data, totalAmount } = await getAllAuthors(page, limit);
+        authors.value = data;
+        authorAmount.value = totalAmount;
     } catch (error) {
         notifyStore.notifyError("Failed to load the authors");
     }
 };
 
-onMounted(fetchAuthors);
+const handlePageChange = (page: number) => {
+    currentPage.value = page;
+    fetchAuthors(page);
+};
+
+onMounted(() => fetchAuthors(currentPage.value));
 
 </script>
 
@@ -28,6 +36,7 @@ onMounted(fetchAuthors);
         <div v-for="author in authors" :key="author.id">
             <AuthorCard :author="author" />
         </div>
-        <!-- <PaginationMenu /> -->
+        <PaginationMenu v-if="authorAmount" :totalPages="Math.ceil(authorAmount / limit)" :perPage="limit"
+        :currentPage="currentPage" @pagechanged="handlePageChange" />
     </div>
 </template>

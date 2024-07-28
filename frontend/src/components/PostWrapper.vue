@@ -6,7 +6,7 @@ import { getAllPosts } from '@/services/PostService';
 import PostCard from './PostCard.vue';
 import PaginationMenu from './PaginationMenu.vue';
 
-const postsPerPage = 5;
+const limit = 5;
 const currentPage = ref<number>(1);
 const notifyStore = useNotifyStore();
 const posts = ref<Post[]>([]);
@@ -14,7 +14,7 @@ const postAmount = ref<number>();
 
 const fetchPosts = async (page: number) => {
     try {
-        const { data, totalAmount } = await getAllPosts(page);
+        const { data, totalAmount } = await getAllPosts(page, limit);
         posts.value = data;
         postAmount.value = totalAmount;
     } catch (error) {
@@ -37,7 +37,7 @@ const handlePageChange = (page: number) => {
         <div v-for="post in posts" :key="post.id">
             <PostCard :post="post" />
         </div>
-        <PaginationMenu v-if="postAmount" :totalPages="Math.ceil(postAmount / postsPerPage)" :perPage="postsPerPage"
-            :currentPage="1" @pagechanged="handlePageChange" />
+        <PaginationMenu v-if="postAmount" :totalPages="Math.ceil(postAmount / limit)" :perPage="limit"
+            :currentPage="currentPage" @pagechanged="handlePageChange" />
     </div>
 </template>
