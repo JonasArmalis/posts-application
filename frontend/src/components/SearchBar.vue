@@ -1,16 +1,23 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { debounce } from "lodash";
+import { ref, defineEmits, watch } from 'vue';
 
-// Define the ref for the search input
 const searchValue = ref<string>('');
 
-// Define the emit function to communicate with the parent component
 const emit = defineEmits(['search']);
 
-// Function to handle button click
 const onButtonClick = () => {
     emit('search', searchValue.value);
 };
+
+const debouncedSearch = debounce((value: string) => {
+    emit('search', value);
+}, 700);
+
+watch(searchValue, (newValue) => {
+    debouncedSearch(newValue);
+});
+
 </script>
 
 <template>
