@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Post } from "@/interfaces/Post";
+import router from "@/router";
 import { format } from "date-fns";
 
 const props = defineProps<{
@@ -11,11 +12,14 @@ const displayDate = props.post.updated_at >= props.post.created_at
     ? props.post.updated_at
     : props.post.created_at;
 
+const redirectToPost = () => {
+    router.push({ path: `/posts/${props.post.id}` });
+};
 
 </script>
 
 <template>
-    <div class="box">
+    <div class="box" @click="redirectToPost">
         <div class="card">
             <div class="card-content">
                 <div class="media">
