@@ -7,7 +7,6 @@ const props = defineProps<{
     post: Post
 }>();
 
-// Determine which date to show
 const displayDate = props.post.updated_at >= props.post.created_at
     ? props.post.updated_at
     : props.post.created_at;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { debounce } from "lodash";
-import { ref, defineEmits, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const searchValue = ref<string>('');
 
