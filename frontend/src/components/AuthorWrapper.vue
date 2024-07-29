@@ -33,10 +33,13 @@ onMounted(() => fetchAuthors(currentPage.value));
 
 <template>
     <div>
+        <div v-if="authors.length == 0">
+            <h1> <strong>Failed to load authors, please try again later </strong></h1>
+        </div>
         <div v-for="author in authors" :key="author.id">
             <AuthorCard :author="author" />
         </div>
         <PaginationMenu v-if="authorAmount" :totalPages="Math.ceil(authorAmount / limit)" :perPage="limit"
-        :currentPage="currentPage" @pagechanged="handlePageChange" />
+            :currentPage="currentPage" @pagechanged="handlePageChange" />
     </div>
 </template>

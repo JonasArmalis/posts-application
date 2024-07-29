@@ -34,6 +34,9 @@ const handlePageChange = (page: number) => {
 
 <template>
     <div>
+        <div v-if="posts.length == 0">
+            <h1> <strong>Failed to load posts, please try again later </strong></h1>
+        </div>
         <div v-for="post in posts" :key="post.id">
             <PostCard :post="post" />
         </div>
