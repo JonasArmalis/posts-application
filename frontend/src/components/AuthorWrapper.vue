@@ -54,7 +54,7 @@ onMounted(fetchAuthors);
         <div v-for="author in authors" :key="author.id">
             <AuthorCard :author="author" />
         </div>
-        <PaginationMenu v-if="authorAmount" :totalPages="Math.ceil(authorAmount / limit)" :perPage="limit"
+        <PaginationMenu v-if="authorAmount && authorAmount > 0" :totalPages="Math.ceil(authorAmount / limit)" :perPage="limit"
             :currentPage="currentPage" @pagechanged="handlePageChange" />
     </div>
 </template>
