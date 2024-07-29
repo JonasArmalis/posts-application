@@ -15,18 +15,15 @@ const displayDate = props.author.updated_at >= props.author.created_at
 </script>
 
 <template>
-    <div class="box">
-        <div class="card">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content">
-                        <p class="title is-4">{{ props.author.name }} {{ props.author.surname }}</p>
-                    </div>
+    <div class="card" style="margin: 10px;">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4">{{ props.author.name }} {{ props.author.surname }}</p>
                 </div>
-
-                <div class="content">
-                    <time>{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
-                </div>
+            </div>
+            <div class="content">
+                <time>{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
             </div>
         </div>
     </div>

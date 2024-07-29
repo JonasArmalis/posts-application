@@ -14,6 +14,7 @@ const toast = () => {
         type: props.notification.type, 
         showIcon: true,
         timeout: 4000,
+        position: 'bottom-right',
         onClose: () => notifyStore.removeNotification(props.notification),
     });
 };

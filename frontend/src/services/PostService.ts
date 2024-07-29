@@ -3,12 +3,13 @@ import type { Post } from '../interfaces/Post'
 
 const END_POINT = '/posts'
 
-const getAllPosts = async (page: number, limit: number): Promise<{data: Post[], totalAmount: number}> => {
+const getAllPosts = async (page: number, limit: number, searchValue: String): Promise<{data: Post[], totalAmount: number}> => {
   const response = await httpClient.get<Post[]>(END_POINT, {
     params: {
       _expand: 'author',
       _page: page,
-      _limit: limit
+      _limit: limit,
+      q: searchValue
     }
   })
 
