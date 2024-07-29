@@ -3,13 +3,14 @@ import type { Author } from "../interfaces/Author";
 
 const END_POINT = '/authors'
 
-const getAllAuthors = async (page: number, limit: number):  Promise<{data: Author[], totalAmount: number}> => {
+const getAllAuthors = async (page: number, limit: number, searchValue: String):  Promise<{data: Author[], totalAmount: number}> => {
   const response = await httpClient.get<Author[]>(END_POINT, {
     params: {
       _page: page,
-      _limit: limit
+      _limit: limit,
+      q: searchValue
     }
-  });
+  })
   return {
     data: response.data,
     totalAmount: response.headers['x-total-count']

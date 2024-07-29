@@ -5,36 +5,51 @@ import { getAllAuthors } from '../services/AuthorService';
 import AuthorCard from './AuthorCard.vue';
 import { useNotifyStore } from '@/stores/notification.store';
 import PaginationMenu from './PaginationMenu.vue';
+import SearchBar from './SearchBar.vue';
 
 const notifyStore = useNotifyStore();
 const limit = 5;
+const searchValue = ref<String>("");
 const currentPage = ref<number>(1);
 const authors = ref<Author[]>([]);
 const authorAmount = ref<number>();
+const infoMessage = ref<string>();
 
-const fetchAuthors = async (page: number) => {
+const fetchAuthors = async () => {
     try {
-        const { data, totalAmount } = await getAllAuthors(page, limit);
+        const { data, totalAmount } = await getAllAuthors(currentPage.value, limit, searchValue.value);
         authors.value = data;
         authorAmount.value = totalAmount;
+        if (authors.value.length == 0) {
+            infoMessage.value = "No Authors have been found with this search criteria";
+            notifyStore.notifyInfo(infoMessage.value);
+        }
     } catch (error) {
-        notifyStore.notifyError("Failed to load the authors");
+        infoMessage.value = "Failed to load the authors, please try again later";
+        notifyStore.notifyError(infoMessage.value);
     }
 };
 
 const handlePageChange = (page: number) => {
     currentPage.value = page;
-    fetchAuthors(page);
+    fetchAuthors();
 };
+const handleSearch = (input: String) => {
+    currentPage.value = 1;
+    searchValue.value = input;
+    infoMessage.value = undefined;
+    fetchAuthors();
+}
 
-onMounted(() => fetchAuthors(currentPage.value));
+onMounted(fetchAuthors);
 
 </script>
 
 <template>
-    <div>
-        <div v-if="authors.length == 0">
-            <h1> <strong>Failed to load authors, please try again later </strong></h1>
+    <div style="padding: 20px;">
+        <SearchBar @search="handleSearch" />
+        <div v-if="infoMessage">
+            <h1> <strong> {{ infoMessage }} </strong></h1>
         </div>
         <div v-for="author in authors" :key="author.id">
             <AuthorCard :author="author" />
