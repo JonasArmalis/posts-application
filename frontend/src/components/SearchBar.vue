@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-// Define the ref for the search input
 const searchValue = ref<string>('');
 
-// Define the emit function to communicate with the parent component
 const emit = defineEmits(['search']);
 
-// Function to handle button click
 const onButtonClick = () => {
     emit('search', searchValue.value);
 };

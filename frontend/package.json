@@ -17,8 +17,10 @@
     "axios": "^1.7.2",
     "bulma": "^1.0.2",
     "date-fns": "^3.6.0",
+    "jwt-decode": "^4.0.0",
     "mosha-vue-toastify": "^1.0.23",
     "pinia": "^2.1.7",
+    "save": "^2.9.0",
     "vue": "^3.4.29",
     "vue-router": "^4.4.0"
   },
