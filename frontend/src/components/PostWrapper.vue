@@ -57,7 +57,7 @@ const handleSearch = (input: String) => {
         <div v-for="post in posts" :key="post.id">
             <PostCard :post="post" />
         </div>
-        <PaginationMenu v-if="postAmount" :totalPages="Math.ceil(postAmount / limit)" :perPage="limit"
+        <PaginationMenu v-if="postAmount && postAmount > 0" :totalPages="Math.ceil(postAmount / limit)" :perPage="limit"
             :currentPage="currentPage" @pagechanged="handlePageChange" />
     </div>
 </template>

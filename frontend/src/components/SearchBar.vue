@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+
+import { debounce } from "lodash";
+import { ref, defineEmits, watch } from 'vue';
 
 const searchValue = ref<string>('');
 
@@ -8,6 +10,15 @@ const emit = defineEmits(['search']);
 const onButtonClick = () => {
     emit('search', searchValue.value);
 };
+
+const debouncedSearch = debounce((value: string) => {
+    emit('search', value);
+}, 700);
+
+watch(searchValue, (newValue) => {
+    debouncedSearch(newValue);
+});
+
 </script>
 
 <template>
