@@ -37,10 +37,12 @@ const displayDate = computed(() => {
 </script>
 
 <template>
-    <div v-if="post">
-        <p class="title is-3">{{ post.title }} </p>
-        <p class="subtitle is-6">Posted by: {{ post.author.name }} {{ post.author.surname }}</p>
-        <p class="content">{{ post.body }}</p>
-        <time v-if="displayDate">{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
+    <div class="box">
+        <div v-if="post">
+            <p class="title is-3">{{ post.title }} </p>
+            <p class="subtitle is-6">Posted by: {{ post.author.name }} {{ post.author.surname }}</p>
+            <p class="content">{{ post.body }}</p>
+            <time v-if="displayDate">{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
+        </div>
     </div>
 </template>
