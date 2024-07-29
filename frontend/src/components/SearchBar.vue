@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 
 // Define the ref for the search input
 const searchValue = ref<string>('');

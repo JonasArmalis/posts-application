@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import type { Notification } from '../interfaces/Notification';
 import { useNotifyStore } from '../stores/notification.store';
 import { createToast } from 'mosha-vue-toastify';
