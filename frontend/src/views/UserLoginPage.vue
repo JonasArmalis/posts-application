@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
 import router from '@/router';
 
@@ -16,12 +16,6 @@ const onLoginButtonClick = async () => {
         router.push('/');
     }
 }
-
-onMounted(() => {
-    if (authStore.isUserLoggedIn) {
-        router.push('/');
-    }
-})
 
 </script>
 
