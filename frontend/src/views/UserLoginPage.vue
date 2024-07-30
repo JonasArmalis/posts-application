@@ -1,19 +1,33 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
 import router from '@/router';
+import { useNotifyStore } from '@/stores/notification.store';
 
 const authStore = useAuthStore();
+const notifyStore = useNotifyStore();
 
 const passwordInput = ref<HTMLInputElement | null>(null);
 
 const email = ref<string>("");
 const password = ref<string>("");
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const validEmail = computed(() => {
+    return emailRegex.test(email.value);
+});
+
+const validPassword = computed(() => {
+    return password.value.length > 0;
+});
+
 const onLoginButtonClick = async () => {
-    const success = await authStore.login(email.value, password.value);
-    if (success) {
-        router.push('/');
+    if (validEmail.value && validPassword.value) {
+        const success = await authStore.login(email.value, password.value);
+        if (success) router.push('/'); 
+    } else {
+        notifyStore.notifyWarning("Please enter a valid email and password");
     }
 }
 
