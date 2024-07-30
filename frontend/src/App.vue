@@ -3,6 +3,7 @@ import { RouterView } from 'vue-router';
 import NavigationBar from './components/NavigationBar.vue';
 
 import NotificationWrapper from './components/NotificationWrapper.vue';
+import ModalCard from './components/ModalCard.vue';
 
 </script>
 
@@ -12,6 +13,7 @@ import NotificationWrapper from './components/NotificationWrapper.vue';
   </header>
   <RouterView />
   <NotificationWrapper/>
+  <ModalCard />
 
 
 </template>
