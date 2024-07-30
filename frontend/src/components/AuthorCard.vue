@@ -15,7 +15,7 @@ const displayDate = props.author.updated_at >= props.author.created_at
 </script>
 
 <template>
-    <div class="card" style="margin: 10px;">
+    <div class="card" style="margin-top: 10px; margin-bottom: 10px">
         <div class="card-content">
             <div class="media">
                 <div class="media-content">
