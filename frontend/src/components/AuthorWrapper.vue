@@ -25,6 +25,8 @@ const fetchAuthors = async () => {
             notifyStore.notifyInfo(infoMessage.value);
         }
     } catch (error) {
+        authorAmount.value = undefined;
+        authors.value = [];
         infoMessage.value = "Failed to load the authors, please try again later";
         notifyStore.notifyError(infoMessage.value);
     }
