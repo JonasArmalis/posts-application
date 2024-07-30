@@ -2,9 +2,18 @@
 import { useModalStore } from '@/stores/modalStore';
 
 import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
 
 const modalStore = useModalStore();
 const { state } = storeToRefs(modalStore);
+
+const modalProps = state.value.props;
+
+onMounted(() => {
+
+    console.log("Modal props:" + modalProps);
+})
+
 
 </script>
 
@@ -17,10 +26,10 @@ const { state } = storeToRefs(modalStore);
                 <button class="delete" aria-label="close" @click="modalStore.closeModal"></button>
             </header>
             <section class="modal-card-body">
-                <component :is="state.component"> </component>
+                <component :is="state.component" v-bind="state.props"> </component>
             </section>
             <footer class="modal-card-foot">
-               
+
             </footer>
         </div>
     </div>

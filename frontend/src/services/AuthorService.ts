@@ -28,6 +28,15 @@ const getAuthor = async (id: number): Promise<Author> => {
   return response.data
 }
 
+const editAuthor = async (name: string, surname: string, id: number): Promise<Author> => {
+  const response = await httpClient.patch<Author>(`${END_POINT}/${id}`, {
+    name: name,
+    surname: surname,
+    updated_at: formatISO(Date.now())
+  })
+  return response.data
+}
+
 const createAuthor = async (name: string, surname: string): Promise<Author> => {
   const authStore = useAuthStore()
 
@@ -50,4 +59,4 @@ const createAuthor = async (name: string, surname: string): Promise<Author> => {
   return response.data
 }
 
-export { getAllAuthors, getAuthor, createAuthor }
+export { getAllAuthors, getAuthor, createAuthor, editAuthor }
