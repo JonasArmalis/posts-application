@@ -1,23 +1,25 @@
 import { defineStore } from 'pinia'
-import { reactive, type Component } from 'vue'
+import { reactive, readonly, shallowRef, type Component } from 'vue'
 
 export const useModalStore = defineStore('modal', () => {
-  const state = reactive({
+  const mutableState = reactive({
     header: "",
     isOpen: false,
-    component: null as Component | null
+    component: shallowRef<Component | null>(null)
   })
 
+  const state = readonly(mutableState)
+
   const openModal = (component: Component, header: string) => {
-    state.isOpen = true;
-    state.component = component;
-    state.header = header;
+    mutableState.isOpen = true
+    mutableState.component = component
+    mutableState.header = header
   }
 
   const closeModal = () => {
-    state.header = "";
-    state.component = null;
-    state.isOpen = false;
+    mutableState.header = ''
+    mutableState.component = null
+    mutableState.isOpen = false
   }
 
   return {

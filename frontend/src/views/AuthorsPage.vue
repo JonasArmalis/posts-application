@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import type { Author } from '@/interfaces/Author';
 import { getAllAuthors } from '../services/AuthorService';
 import { useNotifyStore } from '@/stores/notification.store';
@@ -50,6 +50,12 @@ const handleSearch = (input: String) => {
 }
 
 onMounted(fetchAuthors);
+
+watch(() => modalStore.state.isOpen, (isOpen) => {
+    if (!isOpen) {
+        fetchAuthors();
+    }
+});
 
 </script>
 
