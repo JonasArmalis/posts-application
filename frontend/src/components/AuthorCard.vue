@@ -26,5 +26,9 @@ const displayDate = props.author.updated_at >= props.author.created_at
                 <time>{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
             </div>
         </div>
+        <footer class="card-footer">
+            <a class="card-footer-item">Edit</a>
+            <a class="card-footer-item">Delete</a>
+        </footer>
     </div>
 </template>

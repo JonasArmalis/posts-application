@@ -4,7 +4,6 @@ import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
 import { computed, ref } from 'vue';
 
-
 const name = ref<string>("");
 const surname = ref<string>("");
 
