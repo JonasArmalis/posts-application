@@ -2,52 +2,74 @@
 import { createAuthor } from '@/services/AuthorService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
-import { computed, ref } from 'vue';
+import { useForm, useField } from 'vee-validate';
+import * as yup from 'yup';
 
-const name = ref<string>("");
-const surname = ref<string>("");
+const schema = yup.object({
+    name: yup.string()
+        .required('Name is required')
+        .min(2, 'Name must be at least 2 characters')
+        .test('not-only-spaces', 'Name must consist of at least 2 non-space characters', value => value !== undefined && value.trim().length >= 2)
+        .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\s]*$/, 'Name cannot contain numbers or special symbols')
+        .max(50, 'Name cannot be more than 50 characters'),
+    surname: yup.string()
+        .required('Surname is required')
+        .min(2, 'Surname must be at least 2 characters')
+        .test('not-only-spaces', 'Surname must consist of at least 2 non-space characters', value => value !== undefined && value.trim().length >= 2)
+        .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\s]*$/, 'Name cannot contain numbers or special symbols')
+        .max(50, 'Surname cannot be more than 50 characters')
+});
+
+const { handleSubmit, resetForm } = useForm({
+    validationSchema: schema,
+});
+
+const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');
+const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField('surname');
 
 const modalStore = useModalStore();
 const notifyStore = useNotifyStore();
 
-const validFields = computed(() => {
-    return name.value.length > 0 && surname.value.length > 0;
+const onSubmit = handleSubmit(async (values) => {
+    try {
+        await createAuthor(values.name, values.surname);
+        notifyStore.notifySuccess("Success! Author has been created");
+        modalStore.closeModal();
+        resetForm();
+    } catch (error) {
+        notifyStore.notifyError("Failed to create an author");
+    }
 });
 
-const onSaveButtonClick = async () => {
-    if (validFields.value) {
-        try {
-            await createAuthor(name.value, surname.value);
-            modalStore.closeModal();
-            notifyStore.notifySuccess("Success! Author has been created");
-        } catch (error) {
-            notifyStore.notifyError("Failed to create an author");
-        }
-    } else {
-        notifyStore.notifyWarning("Please enter name and surname")
-    }
-}
+const onCancel = () => {
+    modalStore.closeModal();
+};
 
 </script>
 
 <template>
     <div>
-        <div class="field">
-            <label class="label">Name</label>
-            <div class="control">
-                <input v-model="name" class="input" type="text" placeholder="eg. John">
+        <form @submit="onSubmit" no-validate>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input v-model="name" @blur="nameBlur" class="input" type="text" placeholder="e.g. John">
+                </div>
+                <p v-if="nameError" class="help is-danger">{{ nameError }}</p>
             </div>
-        </div>
 
-        <div class="field">
-            <label class="label">Surname</label>
-            <div class="control">
-                <input v-model="surname" class="input" type="text" placeholder="e.g. Smith">
+            <div class="field">
+                <label class="label">Surname</label>
+                <div class="control">
+                    <input v-model="surname" @blur="surnameBlur" class="input" type="text" placeholder="e.g. Smith">
+                </div>
+                <p v-if="surnameError" class="help is-danger">{{ surnameError }}</p>
             </div>
-        </div>
-        <div class="buttons">
-            <button @click="onSaveButtonClick" class="button is-success">Save</button>
-            <button @click="modalStore.closeModal" class="button is-danger">Cancel</button>
-        </div>
+
+            <div class="buttons">
+                <button type="submit" class="button is-success">Save</button>
+                <button type="button" @click="onCancel" class="button is-danger">Cancel</button>
+            </div>
+        </form>
     </div>
 </template>
