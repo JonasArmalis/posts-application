@@ -4,6 +4,7 @@ import PostDetailsPage from '@//views/PostDetailsPage.vue'
 import PostsPage from '@/views/PostsPage.vue'
 import UserLoginPage from '@/views/UserLoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,12 +13,12 @@ const router = createRouter({
       path: '/posts',
       alias: ['/'],
       children: [
-        { 
+        {
           path: '',
           name: 'posts',
           component: PostsPage
         },
-        { 
+        {
           path: 'posts/:id',
           name: 'post-details',
           component: PostDetailsPage,
@@ -33,7 +34,11 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: UserLoginPage
+      component: UserLoginPage,
+      beforeEnter: () => {
+        const authStore = useAuthStore();
+        if (authStore.isUserLoggedIn) return '/';
+      }
     },
     {
       path: '/:pathMatch(.*)*',

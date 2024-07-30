@@ -25,6 +25,8 @@ const fetchPosts = async () => {
             notifyStore.notifyInfo(infoMessage.value);
         }
     } catch (error) {
+        postAmount.value = undefined;
+        posts.value = [];
         infoMessage.value = "Failed to load the posts, please try again later";
         notifyStore.notifyError(infoMessage.value);
     }

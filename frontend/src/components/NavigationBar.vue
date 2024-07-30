@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import router from '@/router';
+import { useAuthStore } from '@/stores/authStore';
+
+const authStore = useAuthStore();
+
+const onLogoutButtonClick = async () => {
+    await authStore.logout(); 
+    router.push('/login'); 
+};
 </script>
 
 <template>
@@ -16,11 +25,13 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <RouterLink class="button is-primary" to="/login">
-                            <strong>
-                                Login
-                            </strong>
+                        <RouterLink v-if="!authStore.isUserLoggedIn" class="button is-primary" to="/login">
+                            <strong>Login</strong>
                         </RouterLink>
+
+                        <button v-if="authStore.isUserLoggedIn" @click="onLogoutButtonClick" class="button is-danger">
+                            <strong>Logout</strong>
+                        </button>
                     </div>
                 </div>
             </div>
