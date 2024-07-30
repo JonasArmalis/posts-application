@@ -22,8 +22,10 @@
     "mosha-vue-toastify": "^1.0.23",
     "pinia": "^2.1.7",
     "save": "^2.9.0",
+    "vee-validate": "^4.13.2",
     "vue": "^3.4.29",
-    "vue-router": "^4.4.0"
+    "vue-router": "^4.4.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",

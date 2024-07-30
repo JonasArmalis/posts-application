@@ -18,7 +18,7 @@ const redirectToPost = () => {
 </script>
 
 <template>
-    <div class="card" @click="redirectToPost" style="margin: 10px;">
+    <div class="card" @click="redirectToPost" style="margin-top: 10px; margin-bottom: 10px">
         <div class="card-content">
             <div class="media">
                 <div class="media-content">

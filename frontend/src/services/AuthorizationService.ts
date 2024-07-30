@@ -1,13 +1,14 @@
 import type { LoginResponse } from '@/interfaces/LoginResponse'
 import httpClient from './HttpClient'
 import { AxiosError } from 'axios';
+import type { User } from '@/interfaces/User';
 
 const END_POINT = '/login'
 
 const requestLogin = async (
   email: string,
   password: string
-): Promise<{ token: string; username: string }> => {
+): Promise<{ token: string; user: User }> => {
   try {
     const response = await httpClient.post<LoginResponse>(END_POINT, {
       email: email,
@@ -15,7 +16,7 @@ const requestLogin = async (
     })
     return {
       token: response.data.accessToken,
-      username: response.data.user.name
+      user: response.data.user
     }
   } catch (error: unknown) {
     if (error instanceof AxiosError) {

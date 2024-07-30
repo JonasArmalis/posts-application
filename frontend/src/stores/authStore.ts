@@ -1,14 +1,14 @@
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { useNotifyStore } from './notification.store';
-import { requestLogin } from '@/services/AuthorizationService';
+import { useNotifyStore } from './notification.store'
+import { requestLogin } from '@/services/AuthorizationService'
 
 export const useAuthStore = defineStore('auth', () => {
+  const accessToken = ref<string | null>(window.localStorage.getItem('access_token'))
+  const userId = ref<number>()
 
-  const accessToken = ref<string | null>(window.localStorage.getItem('access_token'));
-
-  const isUserLoggedIn = computed ((): boolean => {
+  const isUserLoggedIn = computed((): boolean => {
     if (!accessToken.value) {
       return false
     }
@@ -24,16 +24,16 @@ export const useAuthStore = defineStore('auth', () => {
     } catch (error) {
       return false
     }
-  });
+  })
 
   const login = async (email: string, password: string): Promise<boolean> => {
     const notifyStore = useNotifyStore()
 
     try {
-      const { token, username } = await requestLogin(email, password)
+      const { token, user } = await requestLogin(email, password)
       window.localStorage.setItem('access_token', token)
-      window.localStorage.setItem('username', username)
       accessToken.value = token
+      userId.value = user.id
       notifyStore.notifySuccess('Success! You are now logged in.')
       return true
     } catch (error: unknown) {
@@ -51,15 +51,15 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const logout = async () => {
-    accessToken.value = null;
-    window.localStorage.removeItem('access_token');
-    window.localStorage.removeItem('username');
+    accessToken.value = null
+    window.localStorage.removeItem('access_token')
   }
 
   return {
+    userId,
     accessToken,
     isUserLoggedIn,
     login,
     logout
   }
-});
+})

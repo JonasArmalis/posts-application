@@ -3,7 +3,7 @@ import { RouterView } from 'vue-router';
 import NavigationBar from './components/NavigationBar.vue';
 
 import NotificationWrapper from './components/NotificationWrapper.vue';
-import ModalCard from './components/ModalCard.vue';
+import ModalCard from './components/ModalWindow.vue';
 
 </script>
 
