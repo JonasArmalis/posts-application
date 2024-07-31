@@ -48,7 +48,7 @@ const onSubmit = handleSubmit(async (values) => {
                 <p v-if="surnameError" class="help is-danger">{{ surnameError }}</p>
             </div>
 
-            <div class="buttons">
+            <div class="buttons is-centered">
                 <button type="submit" class="button is-success">Save</button>
                 <button type="button" @click="modalStore.closeModal()" class="button is-danger">Cancel</button>
             </div>
