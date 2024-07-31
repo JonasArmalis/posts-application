@@ -1,16 +1,38 @@
 <script setup lang="ts">
 import type { Author } from '@/interfaces/Author';
+import { useModalStore } from '@/stores/modalStore';
 import { format } from "date-fns";
+import EditAuthorForm from './forms/EditAuthorForm.vue';
+import { computed } from 'vue';
+import { useAuthStore } from '@/stores/authStore';
+import { getAuthor } from '@/services/AuthorService';
+import { useNotifyStore } from '@/stores/notification.store';
 
+
+const modalStore = useModalStore();
+const notifyStore = useNotifyStore();
+const authStore = useAuthStore();
 const props = defineProps<{
     author: Author
 }>();
 
-// Determine which date to show
-const displayDate = props.author.updated_at >= props.author.created_at
-    ? props.author.updated_at
-    : props.author.created_at;
 
+
+const openAuthorFormModal = async () => {
+    try {
+        const author = await getAuthor(props.author.id);
+        modalStore.openModal(EditAuthorForm, 'Edit author details', {author: author})
+    } catch (error) {
+        notifyStore.notifyError("Failed to get author, please try again later");
+    }
+}
+
+const displayDate = computed(() => {
+  const date = props.author.updated_at > props.author.created_at 
+    ? props.author.updated_at 
+    : props.author.created_at;
+  return format(new Date(date), 'yyyy-MM-dd h:mm a');
+});
 
 </script>
 
@@ -23,8 +45,12 @@ const displayDate = props.author.updated_at >= props.author.created_at
                 </div>
             </div>
             <div class="content">
-                <time>{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
+                <time>{{ displayDate }}</time>
             </div>
         </div>
+        <footer v-if="authStore.isUserLoggedIn" class="card-footer">
+            <a @click="openAuthorFormModal" class="card-footer-item">Edit</a>
+            <a class="card-footer-item">Delete</a>
+        </footer>
     </div>
 </template>

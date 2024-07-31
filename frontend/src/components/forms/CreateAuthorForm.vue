@@ -2,26 +2,11 @@
 import { createAuthor } from '@/services/AuthorService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
+import { authorValidationSchema } from '@/validation/authorValidationScema';
 import { useForm, useField } from 'vee-validate';
-import * as yup from 'yup';
-
-const schema = yup.object({
-    name: yup.string()
-        .required('Name is required')
-        .min(2, 'Name must be at least 2 characters')
-        .test('not-only-spaces', 'Name must consist of at least 2 non-space characters', value => value !== undefined && value.trim().length >= 2)
-        .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\s]*$/, 'Name cannot contain numbers or special symbols')
-        .max(50, 'Name cannot be more than 50 characters'),
-    surname: yup.string()
-        .required('Surname is required')
-        .min(2, 'Surname must be at least 2 characters')
-        .test('not-only-spaces', 'Surname must consist of at least 2 non-space characters', value => value !== undefined && value.trim().length >= 2)
-        .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\s]*$/, 'Name cannot contain numbers or special symbols')
-        .max(50, 'Surname cannot be more than 50 characters')
-});
 
 const { handleSubmit, resetForm } = useForm({
-    validationSchema: schema,
+    validationSchema: authorValidationSchema,
 });
 
 const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');
@@ -34,16 +19,13 @@ const onSubmit = handleSubmit(async (values) => {
     try {
         await createAuthor(values.name, values.surname);
         notifyStore.notifySuccess("Success! Author has been created");
-        modalStore.closeModal();
-        resetForm();
+        modalStore.setRequestSentStatus(true);
     } catch (error) {
         notifyStore.notifyError("Failed to create an author");
     }
-});
-
-const onCancel = () => {
     modalStore.closeModal();
-};
+    resetForm();
+});
 
 </script>
 
@@ -68,7 +50,7 @@ const onCancel = () => {
 
             <div class="buttons">
                 <button type="submit" class="button is-success">Save</button>
-                <button type="button" @click="onCancel" class="button is-danger">Cancel</button>
+                <button type="button" @click="modalStore.closeModal()" class="button is-danger">Cancel</button>
             </div>
         </form>
     </div>

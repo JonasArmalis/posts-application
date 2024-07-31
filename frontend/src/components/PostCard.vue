@@ -2,14 +2,18 @@
 import type { Post } from "@/interfaces/Post";
 import router from "@/router";
 import { format } from "date-fns";
+import { computed } from "vue";
 
 const props = defineProps<{
     post: Post
 }>();
 
-const displayDate = props.post.updated_at >= props.post.created_at
-    ? props.post.updated_at
+const displayDate = computed(() => {
+  const date = props.post.updated_at > props.post.created_at 
+    ? props.post.updated_at 
     : props.post.created_at;
+  return format(new Date(date), 'yyyy-MM-dd h:mm a');
+});
 
 const redirectToPost = () => {
     router.push({ path: `/posts/${props.post.id}` });
@@ -28,7 +32,7 @@ const redirectToPost = () => {
                 </div>
             </div>
             <div class="content">
-                <time>{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
+                <time>{{ displayDate }}</time>
             </div>
         </div>
     </div>

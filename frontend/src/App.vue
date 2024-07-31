@@ -4,6 +4,10 @@ import NavigationBar from './components/NavigationBar.vue';
 
 import NotificationWrapper from './components/NotificationWrapper.vue';
 import ModalCard from './components/ModalWindow.vue';
+import { useModalStore } from './stores/modalStore';
+import { storeToRefs } from 'pinia';
+const modalStore = useModalStore();
+const { state } = storeToRefs(modalStore);
 
 </script>
 
@@ -13,7 +17,9 @@ import ModalCard from './components/ModalWindow.vue';
   </header>
   <RouterView />
   <NotificationWrapper/>
-  <ModalCard />
+  <div v-if="state.isOpen">
+    <ModalCard />
+  </div>
 
 
 </template>

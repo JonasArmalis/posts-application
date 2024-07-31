@@ -1,8 +1,8 @@
 export interface Author {
   id: number
   userId: Number
-  name: String
-  surname: String
+  name: string
+  surname: string
   created_at: Date
   updated_at: Date
 }
