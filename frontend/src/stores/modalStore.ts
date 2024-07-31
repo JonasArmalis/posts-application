@@ -6,7 +6,8 @@ export const useModalStore = defineStore('modal', () => {
     header: '',
     isOpen: false,
     component: shallowRef<Component | null>(null),
-    props: shallowRef<object | null>(null)
+    props: shallowRef<object | null>(null),
+    requestSent: false 
   })
 
   const state = readonly(mutableState)
@@ -16,6 +17,7 @@ export const useModalStore = defineStore('modal', () => {
     mutableState.component = markRaw(component)
     mutableState.header = header
     mutableState.isOpen = true
+    mutableState.requestSent = false
   }
 
   const closeModal = () => {
@@ -25,9 +27,15 @@ export const useModalStore = defineStore('modal', () => {
     mutableState.props = null
   }
 
+  const setRequestSentStatus = (status: boolean) => {
+    mutableState.requestSent = status;
+  };
+
   return {
     state,
     openModal,
-    closeModal
+    closeModal,
+    setRequestSentStatus
   }
 })
+

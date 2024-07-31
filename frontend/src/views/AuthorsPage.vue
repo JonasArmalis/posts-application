@@ -51,8 +51,8 @@ const handleSearch = (input: String) => {
 
 onMounted(fetchAuthors);
 
-watch(() => modalStore.state.isOpen, (isOpen) => {
-    if (!isOpen) {
+watch(() => modalStore.state.requestSent, (requestSent) => {
+    if (requestSent) {  
         fetchAuthors();
     }
 });

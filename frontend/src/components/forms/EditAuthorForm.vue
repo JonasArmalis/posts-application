@@ -38,6 +38,7 @@ const onSubmit = handleSubmit(async (values) => {
         try {
             await editAuthor(values.name, values.surname, props.author.id);
             notifyStore.notifySuccess("Success! Author has been modified");
+            modalStore.setRequestSentStatus(true);
         } catch (error) {
             notifyStore.notifyError("Failed to modify the author");
         }
