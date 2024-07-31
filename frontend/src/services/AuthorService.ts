@@ -1,7 +1,7 @@
 import httpClient from './HttpClient'
 import type { Author } from '../interfaces/Author'
 import { useAuthStore } from '@/stores/authStore'
-import { formatISO } from 'date-fns'
+import { format, formatISO } from 'date-fns'
 
 const END_POINT = '/authors'
 
@@ -29,11 +29,18 @@ const getAuthor = async (id: number): Promise<Author> => {
 }
 
 const editAuthor = async (name: string, surname: string, id: number): Promise<Author> => {
+  const authStore = useAuthStore()
   const response = await httpClient.patch<Author>(`${END_POINT}/${id}`, {
     name: name,
     surname: surname,
-    updated_at: formatISO(Date.now())
-  })
+    updated_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${authStore.accessToken}`
+    }
+  }
+)
   return response.data
 }
 
@@ -46,8 +53,8 @@ const createAuthor = async (name: string, surname: string): Promise<Author> => {
       userId: authStore.userId,
       name: name,
       surname: surname,
-      created_at: formatISO(Date.now()),
-      updated_at: formatISO(Date.now())
+      created_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'"),
+      updated_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
     },
     {
       headers: {

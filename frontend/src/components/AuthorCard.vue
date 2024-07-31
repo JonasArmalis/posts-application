@@ -3,6 +3,7 @@ import type { Author } from '@/interfaces/Author';
 import { useModalStore } from '@/stores/modalStore';
 import { format } from "date-fns";
 import EditAuthorForm from './forms/EditAuthorForm.vue';
+import { computed } from 'vue';
 
 
 const modalStore = useModalStore();
@@ -13,14 +14,15 @@ const props = defineProps<{
 
 
 const openAuthorFormModal = () => {
-    modalStore.openModal(EditAuthorForm, 'Edit author details', props.author)
+    modalStore.openModal(EditAuthorForm, 'Edit author details', {author: props.author})
 }
 
-// Determine which date to show
-const displayDate = props.author.updated_at >= props.author.created_at
-    ? props.author.updated_at
+const displayDate = computed(() => {
+  const date = props.author.updated_at > props.author.created_at 
+    ? props.author.updated_at 
     : props.author.created_at;
-
+  return format(new Date(date), 'yyyy-MM-dd h:mm a');
+});
 
 </script>
 
@@ -33,7 +35,7 @@ const displayDate = props.author.updated_at >= props.author.created_at
                 </div>
             </div>
             <div class="content">
-                <time>{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
+                <time>{{ displayDate }}</time>
             </div>
         </div>
         <footer class="card-footer">

@@ -10,27 +10,27 @@
   "authors": [
     {
       "id": 1,
-      "name": "John",
-      "surname": "Doe",
+      "name": "Kate",
+      "surname": "Smith",
       "userId": 1,
       "created_at": "2024-05-05T12:00:00Z",
-      "updated_at": "2024-05-05T12:00:00Z"
+      "updated_at": "2024-07-31T10:22:02Z"
     },
     {
       "id": 2,
       "name": "Jane",
-      "surname": "Smith",
+      "surname": "Gown",
       "userId": 1,
       "created_at": "2024-05-05T12:00:00Z",
-      "updated_at": "2024-05-05T12:00:00Z"
+      "updated_at": "2024-07-31T10:20:31Z"
     },
     {
       "id": 3,
       "name": "Michael",
-      "surname": "Johnson",
+      "surname": "Jackson",
       "userId": 1,
       "created_at": "2024-05-05T12:00:00Z",
-      "updated_at": "2024-05-05T12:00:00Z"
+      "updated_at": "2024-07-31T10:14:02Z"
     },
     {
       "id": 4,
@@ -264,6 +264,20 @@
       "created_at": "2024-07-30T15:32:36+03:00",
       "updated_at": "2024-07-30T15:32:36+03:00",
       "id": 33
+    },
+    {
+      "name": "New One",
+      "surname": "Author",
+      "created_at": "2024-07-31T10:01:15+03:00",
+      "updated_at": "2024-07-31T10:01:15+03:00",
+      "id": 34
+    },
+    {
+      "name": "Test",
+      "surname": "Egzample",
+      "created_at": "2024-07-31T10:25:10Z",
+      "updated_at": "2024-07-31T10:25:10Z",
+      "id": 35
     }
   ],
   "posts": [

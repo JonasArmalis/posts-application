@@ -1,24 +1,14 @@
 <script setup lang="ts">
 import { useModalStore } from '@/stores/modalStore';
-
 import { storeToRefs } from 'pinia';
-import { onMounted } from 'vue';
 
 const modalStore = useModalStore();
 const { state } = storeToRefs(modalStore);
 
-const modalProps = state.value.props;
-
-onMounted(() => {
-
-    console.log("Modal props:" + modalProps);
-})
-
-
 </script>
 
 <template>
-    <div v-if="state.isOpen" class="modal is-active">
+    <div class="modal is-active">
         <div class="modal-background" @click="modalStore.closeModal"></div>
         <div class="modal-card">
             <header class="modal-card-head">
