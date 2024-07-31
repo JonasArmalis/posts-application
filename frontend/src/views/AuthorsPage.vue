@@ -29,7 +29,7 @@ const fetchAuthors = async () => {
         authors.value = data;
         authorAmount.value = totalAmount;
         if (authors.value.length == 0) {
-            infoMessage.value = "No Authors have been found with this search criteria";
+            infoMessage.value = "No Authors have been found";
             notifyStore.notifyInfo(infoMessage.value);
         } else {
             infoMessage.value = undefined;
