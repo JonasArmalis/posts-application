@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import EditAuthorForm from './forms/EditAuthorForm.vue';
 import { computed } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
-import { deleteAuthor, getAuthor } from '@/services/AuthorService';
+import { getAuthor } from '@/services/AuthorService';
 import { useNotifyStore } from '@/stores/notification.store';
 import DeleteAuthorComfirmation from './DeleteAuthorComfirmation.vue';
 

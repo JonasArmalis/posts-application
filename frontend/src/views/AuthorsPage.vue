@@ -7,7 +7,7 @@ import AuthorCard from '@/components/AuthorCard.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import PaginationMenu from '@/components/PaginationMenu.vue';
 import { useModalStore } from '@/stores/modalStore';
-import AuthorForm from '@/components/forms/CreateAuthorForm.vue';
+import CreateAuthorForm from '@/components/forms/CreateAuthorForm.vue';
 import { useAuthStore } from '@/stores/authStore';
 
 const notifyStore = useNotifyStore();
@@ -62,7 +62,7 @@ watch(() => modalStore.state.requestSent, (requestSent) => {
 <template>
     <div style="padding: 20px;">
         <SearchBar @search="handleSearch" />
-        <button v-if="authStore.isUserLoggedIn" @click="modalStore.openModal(AuthorForm, 'Create a new author')"
+        <button v-if="authStore.isUserLoggedIn" @click="modalStore.openModal(CreateAuthorForm, 'Create a new author')"
             class="button is-link">Create Author</button>
         <div v-if="infoMessage">
             <h1> <strong> {{ infoMessage }} </strong></h1>

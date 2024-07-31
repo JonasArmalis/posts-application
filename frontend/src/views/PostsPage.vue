@@ -6,6 +6,9 @@ import { getAllPosts } from '@/services/PostService';
 import PostCard from '@/components/PostCard.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import PaginationMenu from '@/components/PaginationMenu.vue';
+import { useModalStore } from '@/stores/modalStore';
+import { useAuthStore } from '@/stores/authStore';
+import CreatePostForm from '@/components/forms/CreatePostForm.vue';
 
 const limit = 5;
 const searchValue = ref<String>("");
@@ -14,6 +17,9 @@ const notifyStore = useNotifyStore();
 const posts = ref<Post[]>([]);
 const postAmount = ref<number>();
 const infoMessage = ref<string>();
+
+const modalStore = useModalStore();
+const authStore = useAuthStore();
 
 const fetchPosts = async () => {
   try {
@@ -50,6 +56,8 @@ const handleSearch = (input: String) => {
 <template>
   <div style="padding: 20px;">
     <SearchBar @search="handleSearch" />
+    <button v-if="authStore.isUserLoggedIn" @click="modalStore.openModal(CreatePostForm, 'Create a new post')"
+            class="button is-link">Create Post</button>
     <div v-if="infoMessage">
       <h1> <strong> {{ infoMessage }} </strong></h1>
     </div>

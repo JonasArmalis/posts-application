@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import type { Post } from "@/interfaces/Post";
 import router from "@/router";
+import { useAuthStore } from "@/stores/authStore";
+import { useModalStore } from "@/stores/modalStore";
+import { useNotifyStore } from "@/stores/notification.store";
 import { format } from "date-fns";
 import { computed } from "vue";
 
+const modalStore = useModalStore();
+const notifyStore = useNotifyStore();
+const authStore = useAuthStore();
 const props = defineProps<{
     post: Post
 }>();
@@ -19,10 +25,17 @@ const redirectToPost = () => {
     router.push({ path: `/posts/${props.post.id}` });
 };
 
+const onDeleteButtonClick = async () => {
+}
+
+const onEditButtonClick = async () => {
+
+}
+
 </script>
 
 <template>
-    <div class="card" @click="redirectToPost" style="margin-top: 10px; margin-bottom: 10px">
+    <div class="card" style="margin-top: 10px; margin-bottom: 10px">
         <div class="card-content">
             <div class="media">
                 <div class="media-content">
@@ -35,5 +48,10 @@ const redirectToPost = () => {
                 <time>{{ displayDate }}</time>
             </div>
         </div>
+        <footer v-if="authStore.isUserLoggedIn" class="card-footer">
+            <a @click="redirectToPost" class="card-footer-item">View details</a>
+            <a @click="onEditButtonClick" class="card-footer-item">Edit</a>
+            <a @click="onDeleteButtonClick" class="card-footer-item">Delete</a>
+        </footer>
     </div>
 </template>
