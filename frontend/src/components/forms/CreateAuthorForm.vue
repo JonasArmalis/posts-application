@@ -19,11 +19,12 @@ const onSubmit = handleSubmit(async (values) => {
     try {
         await createAuthor(values.name, values.surname);
         notifyStore.notifySuccess("Success! Author has been created");
-        modalStore.closeModal();
-        resetForm();
+        modalStore.setRequestSentStatus(true);
     } catch (error) {
         notifyStore.notifyError("Failed to create an author");
     }
+    modalStore.closeModal();
+    resetForm();
 });
 
 </script>

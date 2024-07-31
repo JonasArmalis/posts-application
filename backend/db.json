@@ -286,6 +286,20 @@
       "created_at": "2024-07-31T13:07:13Z",
       "updated_at": "2024-07-31T13:07:13Z",
       "id": 36
+    },
+    {
+      "name": "New",
+      "surname": "Test",
+      "created_at": "2024-07-31T13:15:31Z",
+      "updated_at": "2024-07-31T13:15:31Z",
+      "id": 37
+    },
+    {
+      "name": "Lewis",
+      "surname": "Tester",
+      "created_at": "2024-07-31T13:16:24Z",
+      "updated_at": "2024-07-31T13:16:24Z",
+      "id": 38
     }
   ],
   "posts": [
