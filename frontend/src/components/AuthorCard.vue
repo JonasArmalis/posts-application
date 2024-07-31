@@ -4,9 +4,11 @@ import { useModalStore } from '@/stores/modalStore';
 import { format } from "date-fns";
 import EditAuthorForm from './forms/EditAuthorForm.vue';
 import { computed } from 'vue';
+import { useAuthStore } from '@/stores/authStore';
 
 
 const modalStore = useModalStore();
+const authStore = useAuthStore();
 const props = defineProps<{
     author: Author
 }>();
@@ -38,7 +40,7 @@ const displayDate = computed(() => {
                 <time>{{ displayDate }}</time>
             </div>
         </div>
-        <footer class="card-footer">
+        <footer v-if="authStore.isUserLoggedIn" class="card-footer">
             <a @click="openAuthorFormModal" class="card-footer-item">Edit</a>
             <a class="card-footer-item">Delete</a>
         </footer>
