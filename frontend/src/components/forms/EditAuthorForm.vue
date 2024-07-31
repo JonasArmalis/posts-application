@@ -5,6 +5,7 @@ import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
 import { authorValidationSchema } from '@/validation/authorValidationScema';
 import { useForm, useField } from 'vee-validate';
+import { computed } from 'vue';
 
 const notifyStore = useNotifyStore();
 const modalStore = useModalStore();
@@ -17,7 +18,7 @@ if (!props.author) {
     notifyStore.notifyError("Failed to load the author edit form")
 }
 
-const { handleSubmit, resetForm } = useForm({
+const { handleSubmit, resetForm, values } = useForm({
     validationSchema: authorValidationSchema,
     initialValues: {
         name: props.author.name,
@@ -28,19 +29,22 @@ const { handleSubmit, resetForm } = useForm({
 const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');
 const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField('surname');
 
-const onSubmit = handleSubmit(async (values) => {
-
-    console.log(props);
-    try {
-        await editAuthor(values.name, values.surname, props.author.id);
-        notifyStore.notifySuccess("Success! Author has been modified");
-        modalStore.closeModal();
-        resetForm();
-    } catch (error) {
-        notifyStore.notifyError("Failed to modify the author");
-    }
+const hasChanges = computed(() => {
+    return values.name != props.author.name || values.surname != props.author.surname;
 });
 
+const onSubmit = handleSubmit(async (values) => {
+    if (hasChanges.value) {
+        try {
+            await editAuthor(values.name, values.surname, props.author.id);
+            notifyStore.notifySuccess("Success! Author has been modified");
+        } catch (error) {
+            notifyStore.notifyError("Failed to modify the author");
+        }
+    }
+    modalStore.closeModal();
+    resetForm();
+});
 
 </script>
 

@@ -5,9 +5,12 @@ import { format } from "date-fns";
 import EditAuthorForm from './forms/EditAuthorForm.vue';
 import { computed } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
+import { getAuthor } from '@/services/AuthorService';
+import { useNotifyStore } from '@/stores/notification.store';
 
 
 const modalStore = useModalStore();
+const notifyStore = useNotifyStore();
 const authStore = useAuthStore();
 const props = defineProps<{
     author: Author
@@ -15,8 +18,13 @@ const props = defineProps<{
 
 
 
-const openAuthorFormModal = () => {
-    modalStore.openModal(EditAuthorForm, 'Edit author details', {author: props.author})
+const openAuthorFormModal = async () => {
+    try {
+        const author = await getAuthor(props.author.id);
+        modalStore.openModal(EditAuthorForm, 'Edit author details', {author: author})
+    } catch (error) {
+        notifyStore.notifyError("Failed to get author, please try again later");
+    }
 }
 
 const displayDate = computed(() => {
