@@ -2,8 +2,8 @@ import type { Author } from "./Author"
 
 export interface Post {
   id: number
-  title: String
-  body: String
+  title: string
+  body: string
   authorId: number
   userId: number
   created_at: Date

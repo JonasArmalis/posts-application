@@ -51,4 +51,23 @@ const createPost = async (title: string, content: string, authorId: number): Pro
   return response.data
 }
 
-export { getAllPosts, getPost, createPost }
+
+const editPost = async (title: string, content: string, id: number): Promise<Post> => {
+  const authStore = useAuthStore()
+  const response = await httpClient.patch<Post>(
+    `${END_POINT}/${id}`,
+    {
+      title: title,
+      body: content,
+      updated_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${authStore.accessToken}`
+      }
+    }
+  )
+  return response.data
+}
+
+export { editPost, getAllPosts, getPost, createPost }

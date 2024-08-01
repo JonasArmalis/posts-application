@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Author } from '@/interfaces/Author';
-import { editAuthor } from '@/services/AuthorService';
+import type { Post } from '@/interfaces/Post';
+import { editPost } from '@/services/PostService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
 import { ActionType } from '@/types/ActionType';
-import { authorValidationSchema } from '@/validation/authorValidationScema';
+import { editPostValidationSchema } from '@/validation/editPostValidationSchema';
 import { useForm, useField } from 'vee-validate';
 import { computed } from 'vue';
 
@@ -12,36 +12,36 @@ const notifyStore = useNotifyStore();
 const modalStore = useModalStore();
 
 const props = defineProps<{
-    author: Author
+    post: Post
 }>();
 
-if (!props.author) {
-    notifyStore.notifyError("Failed to load the author edit form")
+if (!props.post) {
+    notifyStore.notifyError("Failed to load the post edit form")
 }
 
 const { handleSubmit, resetForm, values } = useForm({
-    validationSchema: authorValidationSchema,
+    validationSchema: editPostValidationSchema,
     initialValues: {
-        name: props.author.name,
-        surname: props.author.surname
+        title: props.post.title,
+        content: props.post.body
     }
 });
 
-const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');
-const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField('surname');
+const { value: title, errorMessage: titleError, handleBlur: titleBlur } = useField('title');
+const { value: content, errorMessage: contentError, handleBlur: contentBlur } = useField<string>('content');
 
 const hasChanges = computed(() => {
-    return values.name != props.author.name || values.surname != props.author.surname;
+    return values.title != props.post.title || values.content != props.post.body;
 });
 
 const onSubmit = handleSubmit(async (values) => {
     if (hasChanges.value) {
         try {
-            await editAuthor(values.name, values.surname, props.author.id);
-            notifyStore.notifySuccess("Success! Author has been modified");
+            await editPost(values.title, values.content, props.post.id);
+            notifyStore.notifySuccess("Success! Post has been modified");
             modalStore.setRequestSentStatus(ActionType.EDIT);
         } catch (error) {
-            notifyStore.notifyError("Failed to modify the author");
+            notifyStore.notifyError("Failed to modify the post");
         }
     }
     modalStore.closeModal();
@@ -56,17 +56,18 @@ const onSubmit = handleSubmit(async (values) => {
             <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
-                    <input v-model="name" @blur="nameBlur" class="input" type="text" placeholder="e.g. John">
+                    <input v-model="title" @blur="titleBlur" class="input" type="text" placeholder="e.g. New title">
                 </div>
-                <p v-if="nameError" class="help is-danger">{{ nameError }}</p>
+                <p v-if="titleError" class="help is-danger">{{ titleError }}</p>
             </div>
 
             <div class="field">
-                <label class="label">Surname</label>
+                <label class="label">Content</label>
                 <div class="control">
-                    <input v-model="surname" @blur="surnameBlur" class="input" type="text" placeholder="e.g. Smith">
+                    <textarea v-model="content" @blur="contentBlur" class="textarea"
+                    placeholder="e.g. This is the body of the post"></textarea>
                 </div>
-                <p v-if="surnameError" class="help is-danger">{{ surnameError }}</p>
+                <p v-if="contentError" class="help is-danger">{{ contentError }}</p>
             </div>
 
             <div class="buttons is-centered">
