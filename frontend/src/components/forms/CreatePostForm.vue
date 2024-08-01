@@ -83,7 +83,7 @@ onUnmounted(() => {
 
             <div class="field">
                 <label class="label">Author</label>
-                <div class="control"> <!-- Added ref here -->
+                <div class="control">
                     <div :class="['dropdown', { 'is-active': isDropdownOpen }]">
                         <div class="dropdown-trigger">
                             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" ref="dropdownRef"

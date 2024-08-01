@@ -56,10 +56,10 @@ const onEditButtonClick = async () => {
                 <time>{{ displayDate }}</time>
             </div>
         </div>
-        <footer v-if="authStore.isUserLoggedIn" class="card-footer">
+        <footer class="card-footer">
             <a @click="redirectToPost" class="card-footer-item">View details</a>
-            <a @click="onEditButtonClick" class="card-footer-item">Edit</a>
-            <a @click="onDeleteButtonClick" class="card-footer-item">Delete</a>
+            <a v-if="authStore.isUserLoggedIn" @click="onEditButtonClick" class="card-footer-item">Edit</a>
+            <a v-if="authStore.isUserLoggedIn" @click="onDeleteButtonClick" class="card-footer-item">Delete</a>
         </footer>
     </div>
 </template>
