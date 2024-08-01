@@ -1,7 +1,7 @@
 import httpClient from './HttpClient'
 import type { Author } from '../interfaces/Author'
 import { useAuthStore } from '@/stores/authStore'
-import { format, formatISO } from 'date-fns'
+import { format } from 'date-fns'
 
 const END_POINT = '/authors'
 
