@@ -2,6 +2,7 @@
 import { createAuthor } from '@/services/AuthorService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
+import { ActionType } from '@/types/ActionType';
 import { authorValidationSchema } from '@/validation/authorValidationScema';
 import { useForm, useField } from 'vee-validate';
 
@@ -19,7 +20,7 @@ const onSubmit = handleSubmit(async (values) => {
     try {
         await createAuthor(values.name, values.surname);
         notifyStore.notifySuccess("Success! Author has been created");
-        modalStore.setRequestSentStatus(true);
+        modalStore.setRequestSentStatus(ActionType.CREATE);
     } catch (error) {
         notifyStore.notifyError("Failed to create an author");
     }
@@ -48,7 +49,7 @@ const onSubmit = handleSubmit(async (values) => {
                 <p v-if="surnameError" class="help is-danger">{{ surnameError }}</p>
             </div>
 
-            <div class="buttons">
+            <div class="buttons is-centered">
                 <button type="submit" class="button is-success">Save</button>
                 <button type="button" @click="modalStore.closeModal()" class="button is-danger">Cancel</button>
             </div>

@@ -1,3 +1,4 @@
+import { ActionType } from '@/types/ActionType'
 import { defineStore } from 'pinia'
 import { markRaw, reactive, readonly, shallowRef, type Component } from 'vue'
 
@@ -7,7 +8,7 @@ export const useModalStore = defineStore('modal', () => {
     isOpen: false,
     component: shallowRef<Component | null>(null),
     props: shallowRef<object | null>(null),
-    requestSent: false 
+    requestSent: <ActionType | undefined>(undefined)
   })
 
   const state = readonly(mutableState)
@@ -17,7 +18,7 @@ export const useModalStore = defineStore('modal', () => {
     mutableState.component = markRaw(component)
     mutableState.header = header
     mutableState.isOpen = true
-    mutableState.requestSent = false
+    mutableState.requestSent = undefined
   }
 
   const closeModal = () => {
@@ -27,8 +28,8 @@ export const useModalStore = defineStore('modal', () => {
     mutableState.props = null
   }
 
-  const setRequestSentStatus = (status: boolean) => {
-    mutableState.requestSent = status;
+  const setRequestSentStatus = (type: ActionType) => {
+    mutableState.requestSent = type;
   };
 
   return {

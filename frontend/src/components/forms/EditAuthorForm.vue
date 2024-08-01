@@ -3,6 +3,7 @@ import type { Author } from '@/interfaces/Author';
 import { editAuthor } from '@/services/AuthorService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
+import { ActionType } from '@/types/ActionType';
 import { authorValidationSchema } from '@/validation/authorValidationScema';
 import { useForm, useField } from 'vee-validate';
 import { computed } from 'vue';
@@ -38,7 +39,7 @@ const onSubmit = handleSubmit(async (values) => {
         try {
             await editAuthor(values.name, values.surname, props.author.id);
             notifyStore.notifySuccess("Success! Author has been modified");
-            modalStore.setRequestSentStatus(true);
+            modalStore.setRequestSentStatus(ActionType.EDIT);
         } catch (error) {
             notifyStore.notifyError("Failed to modify the author");
         }
@@ -68,7 +69,7 @@ const onSubmit = handleSubmit(async (values) => {
                 <p v-if="surnameError" class="help is-danger">{{ surnameError }}</p>
             </div>
 
-            <div class="buttons">
+            <div class="buttons is-centered">
                 <button type="submit" class="button is-success">Save</button>
                 <button type="button" @click="modalStore.closeModal()" class="button is-danger">Cancel</button>
             </div>

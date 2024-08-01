@@ -66,4 +66,13 @@ const createAuthor = async (name: string, surname: string): Promise<Author> => {
   return response.data
 }
 
-export { getAllAuthors, getAuthor, createAuthor, editAuthor }
+const deleteAuthor = async (id: number): Promise<void> => {
+  const authStore = useAuthStore()
+  await httpClient.delete<void>(`${END_POINT}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${authStore.accessToken}`
+    }
+  })
+}
+
+export { getAllAuthors, getAuthor, createAuthor, editAuthor, deleteAuthor}

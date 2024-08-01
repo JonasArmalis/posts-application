@@ -5,8 +5,9 @@ import { format } from "date-fns";
 import EditAuthorForm from './forms/EditAuthorForm.vue';
 import { computed } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
-import { getAuthor } from '@/services/AuthorService';
+import { deleteAuthor, getAuthor } from '@/services/AuthorService';
 import { useNotifyStore } from '@/stores/notification.store';
+import DeleteAuthorComfirmation from './DeleteAuthorComfirmation.vue';
 
 
 const modalStore = useModalStore();
@@ -16,9 +17,16 @@ const props = defineProps<{
     author: Author
 }>();
 
+const onDeleteButtonClick = async () => {
+    try {
+        const author = await getAuthor(props.author.id);
+        modalStore.openModal(DeleteAuthorComfirmation, 'Confirm Author Deletion', {author: author})
+    } catch (error) {
+        notifyStore.notifyError("Failed to get author, please try again later");
+    }
+}
 
-
-const openAuthorFormModal = async () => {
+const onEditButtonClick = async () => {
     try {
         const author = await getAuthor(props.author.id);
         modalStore.openModal(EditAuthorForm, 'Edit author details', {author: author})
@@ -49,8 +57,8 @@ const displayDate = computed(() => {
             </div>
         </div>
         <footer v-if="authStore.isUserLoggedIn" class="card-footer">
-            <a @click="openAuthorFormModal" class="card-footer-item">Edit</a>
-            <a class="card-footer-item">Delete</a>
+            <a @click="onEditButtonClick" class="card-footer-item">Edit</a>
+            <a @click="onDeleteButtonClick" class="card-footer-item">Delete</a>
         </footer>
     </div>
 </template>
