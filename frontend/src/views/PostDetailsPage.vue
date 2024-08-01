@@ -66,7 +66,7 @@ const onEditButtonClick = async () => {
 
 <template>
     <div v-if="post" class="card my-5">
-        <div class=" has-text-centered">
+        <div class="card-content has-text-centered">
             <p class="title is-3">{{ post.title }}</p>
             <p class="subtitle is-6">Posted by: {{ post.author.name }} {{ post.author.surname }}</p>
             <p class="content">{{ post.body }}</p>
