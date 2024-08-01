@@ -1,33 +1,20 @@
 <script setup lang="ts">
 import type { Author } from '@/interfaces/Author';
-import { createAuthor, getAllAuthors } from '@/services/AuthorService';
+import { getAllAuthors } from '@/services/AuthorService';
+import { createPost } from '@/services/PostService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
 import { ActionType } from '@/types/ActionType';
+import { createPostValidationSchema } from '@/validation/createPostValidationSchema';
 import { useForm, useField } from 'vee-validate';
-import { onMounted, ref } from 'vue';
-import * as yup from 'yup';
-
-const createPostValidationSchema = yup.object({
-    title: yup.string()
-        .required('Title is required')
-        .min(2, 'Title must be at least 2 characters')
-        .test('not-only-spaces', 'Title must consist of at least 2 non-space characters', value => value !== undefined && value.trim().length >= 2)
-        .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\s]*$/, 'Title cannot contain numbers or special symbols')
-        .max(50, 'Title cannot be more than 50 characters'),
-    content: yup.string()
-        .required('Content is required')
-        .min(2, 'Content must be at least 2 characters')
-        .test('not-only-spaces', 'Content must consist of at least 2 non-space characters', value => value !== undefined && value.trim().length >= 2)
-        .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\s]*$/, 'Content cannot contain numbers or special symbols')
-        .max(50, 'Content cannot be more than 50 characters')
-});
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const modalStore = useModalStore();
 const notifyStore = useNotifyStore();
 const authors = ref<Author[]>([]);
 const isDropdownOpen = ref(false);
 const selectedAuthor = ref<Author | null>(null);
+const dropdownRef = ref<HTMLElement | null>(null); // Ref for the dropdown
 
 const { handleSubmit, resetForm } = useForm({
     validationSchema: createPostValidationSchema,
@@ -35,10 +22,11 @@ const { handleSubmit, resetForm } = useForm({
 
 const { value: title, errorMessage: titleError, handleBlur: titleBlur } = useField<string>('title');
 const { value: content, errorMessage: contentError, handleBlur: contentBlur } = useField<string>('content');
+const { value: authorId, errorMessage: authorError } = useField<number>('authorId');
 
-const onSubmit = handleSubmit(async (values) => {
+const onSubmit = handleSubmit(async () => {
     try {
-        await createAuthor(values.name, values.surname);
+        await createPost(title.value, content.value, authorId.value);
         notifyStore.notifySuccess("Success! Post has been created");
         modalStore.setRequestSentStatus(ActionType.CREATE);
     } catch (error) {
@@ -50,11 +38,7 @@ const onSubmit = handleSubmit(async (values) => {
 
 const fetchAuthors = async () => {
     try {
-        const { data } = await getAllAuthors(0, -1, "");
-        authors.value = data;
-        console.log(authors.value.length);
-        console.dir(authors.value)
-
+        authors.value = await getAllAuthors();
     } catch (error) {
         notifyStore.notifyError("Failed to fetch authors for post creation");
     }
@@ -66,10 +50,24 @@ const toggleDropdown = () => {
 
 const selectAuthor = (author: Author) => {
     selectedAuthor.value = author;
-    isDropdownOpen.value = false; // Close dropdown after selection
+    authorId.value = author.id;
+    isDropdownOpen.value = false;
 };
 
-onMounted(fetchAuthors);
+const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
+        isDropdownOpen.value = false;
+    }
+};
+
+onMounted(() => {
+    fetchAuthors();
+    document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+    document.removeEventListener('click', handleClickOutside);
+});
 </script>
 
 <template>
@@ -85,13 +83,13 @@ onMounted(fetchAuthors);
 
             <div class="field">
                 <label class="label">Author</label>
-                <div class="control">
+                <div class="control"> <!-- Added ref here -->
                     <div :class="['dropdown', { 'is-active': isDropdownOpen }]">
                         <div class="dropdown-trigger">
-                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu"
-                                @click="toggleDropdown">
-                                <span>{{ selectedAuthor ? selectedAuthor.name + selectedAuthor.surname : 'Select Author'
-                                    }}</span>
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" ref="dropdownRef"
+                                @click="toggleDropdown" type="button">
+                                <span>{{ selectedAuthor ? selectedAuthor.name + ' ' + selectedAuthor.surname :
+                                    'SelectAuthor' }}</span>
                                 <span class="icon is-small">
                                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                                 </span>
@@ -107,6 +105,7 @@ onMounted(fetchAuthors);
                         </div>
                     </div>
                 </div>
+                <p v-if="authorError" class="help is-danger">{{ authorError }}</p>
             </div>
 
             <div class="field">
@@ -117,7 +116,6 @@ onMounted(fetchAuthors);
                 </div>
                 <p v-if="contentError" class="help is-danger">{{ contentError }}</p>
             </div>
-
 
             <div class="buttons is-centered">
                 <button type="submit" class="button is-success">Save</button>

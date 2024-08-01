@@ -4,7 +4,7 @@ import { editAuthor } from '@/services/AuthorService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
 import { ActionType } from '@/types/ActionType';
-import { authorValidationSchema } from '@/validation/authorValidationScema';
+import { authorValidationSchema } from '@/validation/authorValidationSchema';
 import { useForm, useField } from 'vee-validate';
 import { computed } from 'vue';
 
@@ -12,7 +12,7 @@ const notifyStore = useNotifyStore();
 const modalStore = useModalStore();
 
 const props = defineProps<{
-    author: Author  
+    author: Author
 }>();
 
 if (!props.author) {
@@ -24,7 +24,7 @@ const { handleSubmit, resetForm, values } = useForm({
     initialValues: {
         name: props.author.name,
         surname: props.author.surname
-    }   
+    }
 });
 
 const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');

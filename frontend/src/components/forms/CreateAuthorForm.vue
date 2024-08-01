@@ -3,7 +3,7 @@ import { createAuthor } from '@/services/AuthorService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
 import { ActionType } from '@/types/ActionType';
-import { authorValidationSchema } from '@/validation/authorValidationScema';
+import { authorValidationSchema } from '@/validation/authorValidationSchema';
 import { useForm, useField } from 'vee-validate';
 
 const { handleSubmit, resetForm } = useForm({

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useNotifyStore } from '@/stores/notification.store';
 import type { Post } from '@/interfaces/Post';
 import { getAllPosts } from '@/services/PostService';
@@ -9,6 +9,7 @@ import PaginationMenu from '@/components/PaginationMenu.vue';
 import { useModalStore } from '@/stores/modalStore';
 import { useAuthStore } from '@/stores/authStore';
 import CreatePostForm from '@/components/forms/CreatePostForm.vue';
+import { ActionType } from '@/types/ActionType';
 
 const limit = 5;
 const searchValue = ref<String>("");
@@ -51,6 +52,16 @@ const handleSearch = (input: String) => {
   infoMessage.value = undefined;
   fetchPosts();
 }
+
+watch(() => modalStore.state.requestSent, (requestSent) => {
+  if (requestSent !== undefined) {
+    if (requestSent === ActionType.DELETE) {
+      currentPage.value = 1;
+    }
+    fetchPosts();
+  }
+});
+
 </script>
 
 <template>

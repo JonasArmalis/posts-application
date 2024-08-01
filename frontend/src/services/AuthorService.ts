@@ -5,7 +5,7 @@ import { format } from 'date-fns'
 
 const END_POINT = '/authors'
 
-const getAllAuthors = async (
+const getAuthorsByPage = async (
   page: number,
   limit: number,
   searchValue: String
@@ -22,6 +22,12 @@ const getAllAuthors = async (
     totalAmount: response.headers['x-total-count']
   }
 }
+
+const getAllAuthors = async (): Promise<Author[]> => {
+  const response = await httpClient.get<Author[]>(END_POINT)
+  return response.data;
+}
+
 
 const getAuthor = async (id: number): Promise<Author> => {
   const response = await httpClient.get<Author>(`${END_POINT}/${id}`)
@@ -75,4 +81,4 @@ const deleteAuthor = async (id: number): Promise<void> => {
   })
 }
 
-export { getAllAuthors, getAuthor, createAuthor, editAuthor, deleteAuthor}
+export { getAllAuthors, getAuthorsByPage, getAuthor, createAuthor, editAuthor, deleteAuthor }

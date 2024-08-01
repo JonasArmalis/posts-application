@@ -1,5 +1,7 @@
 import httpClient from './HttpClient'
 import type { Post } from '../interfaces/Post'
+import { format } from 'date-fns'
+import { useAuthStore } from '@/stores/authStore'
 
 const END_POINT = '/posts'
 
@@ -28,4 +30,25 @@ const getPost = async (id: Number): Promise<Post> => {
   return response.data
 }
 
-export { getAllPosts, getPost }
+const createPost = async (title: string, content: string, authorId: number): Promise<Post> => {
+  const authStore = useAuthStore()
+  const response = await httpClient.post<Post>(
+    END_POINT,
+    {
+      title: title,
+      body: content,
+      userId: authStore.userId,
+      authorId: authorId,
+      created_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'"),
+      updated_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${authStore.accessToken}`
+      }
+    }
+  )
+  return response.data
+}
+
+export { getAllPosts, getPost, createPost }

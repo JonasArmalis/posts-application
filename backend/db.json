@@ -9,31 +9,12 @@
   ],
   "authors": [
     {
-<<<<<<< HEAD
-=======
-      "id": 13,
-      "name": "Benjamin",
-      "surname": "Miller",
-      "userId": 1,
-      "created_at": "2024-05-05T12:45:00Z",
-      "updated_at": "2024-05-05T12:45:00Z"
-    },
-    {
->>>>>>> 14-delete-author
-      "id": 16,
-      "name": "Mia",
-      "surname": "Taylor",
-      "userId": 1,
-      "created_at": "2024-05-05T13:00:00Z",
-      "updated_at": "2024-05-05T13:00:00Z"
-    },
-    {
       "id": 17,
       "name": "Ethan",
-      "surname": "Anderson",
+      "surname": "Anderso",
       "userId": 1,
       "created_at": "2024-05-05T13:05:00Z",
-      "updated_at": "2024-05-05T13:05:00Z"
+      "updated_at": "2024-08-01T13:35:22Z"
     },
     {
       "id": 19,
@@ -62,23 +43,12 @@
     {
       "id": 23,
       "name": "Liam",
-      "surname": "Lewis",
+      "surname": "Lewi",
       "userId": 1,
       "created_at": "2024-05-05T13:35:00Z",
-      "updated_at": "2024-05-05T13:35:00Z"
+      "updated_at": "2024-08-01T14:00:52Z"
     },
     {
-<<<<<<< HEAD
-=======
-      "id": 24,
-      "name": "Zoe",
-      "surname": "Roberts",
-      "userId": 1,
-      "created_at": "2024-05-05T13:40:00Z",
-      "updated_at": "2024-05-05T13:40:00Z"
-    },
-    {
->>>>>>> 14-delete-author
       "name": "Hi",
       "surname": "There",
       "created_at": "2024-07-30T14:01:50+03:00",
@@ -86,16 +56,6 @@
       "id": 26
     },
     {
-<<<<<<< HEAD
-=======
-      "name": " ",
-      "surname": " ",
-      "created_at": "2024-07-30T14:02:21+03:00",
-      "updated_at": "2024-07-30T14:02:21+03:00",
-      "id": 27
-    },
-    {
->>>>>>> 14-delete-author
       "name": "dfg",
       "surname": "dfg",
       "created_at": "2024-07-30T14:51:10+03:00",
@@ -139,7 +99,6 @@
       "id": 36
     },
     {
-<<<<<<< HEAD
       "name": "sdfg",
       "surname": "sdfg",
       "created_at": "2024-07-31T17:05:03Z",
@@ -147,82 +106,127 @@
       "id": 40
     },
     {
-=======
-      "name": "Low",
-      "surname": "Baller",
-      "created_at": "2024-07-31T16:53:47Z",
-      "updated_at": "2024-07-31T16:53:47Z",
-      "id": 37
-    },
-    {
-      "name": "Kenedy",
-      "surname": "Brwon",
-      "created_at": "2024-07-31T16:53:58Z",
-      "updated_at": "2024-07-31T16:53:58Z",
-      "id": 38
-    },
-    {
-      "name": "lecker",
-      "surname": "Mason",
-      "created_at": "2024-07-31T17:03:40Z",
-      "updated_at": "2024-07-31T17:03:40Z",
-      "id": 39
-    },
-    {
-      "name": "sdfg",
-      "surname": "sdfg",
-      "created_at": "2024-07-31T17:05:03Z",
-      "updated_at": "2024-07-31T17:05:03Z",
-      "id": 40
-    },
-    {
->>>>>>> 14-delete-author
       "name": "sdfg",
       "surname": "sdfg",
       "created_at": "2024-07-31T17:05:49Z",
       "updated_at": "2024-07-31T17:05:49Z",
       "id": 41
-<<<<<<< HEAD
-=======
     },
     {
-      "name": "Lewis",
-      "surname": "Dunk",
-      "created_at": "2024-07-31T17:07:50Z",
-      "updated_at": "2024-07-31T17:07:50Z",
+      "name": "New",
+      "surname": "Author",
+      "created_at": "2024-08-01T10:36:27Z",
+      "updated_at": "2024-08-01T10:36:27Z",
       "id": 42
     },
     {
-      "name": "Karla",
-      "surname": "Marla",
-      "created_at": "2024-07-31T17:10:01Z",
-      "updated_at": "2024-07-31T17:10:01Z",
+      "name": "James",
+      "surname": "Smith",
+      "created_at": "2024-08-01T10:37:47Z",
+      "updated_at": "2024-08-01T10:37:47Z",
       "id": 43
->>>>>>> 14-delete-author
+    },
+    {
+      "userId": 1,
+      "name": "Karen",
+      "surname": "Mester",
+      "created_at": "2024-08-01T10:40:26Z",
+      "updated_at": "2024-08-01T10:40:26Z",
+      "id": 44
+    },
+    {
+      "userId": 1,
+      "name": "Karlen",
+      "surname": "Charlson",
+      "created_at": "2024-08-01T10:40:42Z",
+      "updated_at": "2024-08-01T10:40:42Z",
+      "id": 45
+    },
+    {
+      "name": "Ray",
+      "surname": "Mason",
+      "created_at": "2024-08-01T10:41:20Z",
+      "updated_at": "2024-08-01T10:41:20Z",
+      "id": 46
+    },
+    {
+      "name": "Ray",
+      "surname": "Mason",
+      "created_at": "2024-08-01T10:41:46Z",
+      "updated_at": "2024-08-01T10:41:46Z",
+      "id": 47
+    },
+    {
+      "name": "Test",
+      "surname": "Test",
+      "created_at": "2024-08-01T10:48:29Z",
+      "updated_at": "2024-08-01T10:48:29Z",
+      "id": 48
+    },
+    {
+      "name": "Test",
+      "surname": "Same",
+      "created_at": "2024-08-01T10:48:54Z",
+      "updated_at": "2024-08-01T10:48:54Z",
+      "id": 49
+    },
+    {
+      "userId": 1,
+      "name": "New",
+      "surname": "Author",
+      "created_at": "2024-08-01T10:50:15Z",
+      "updated_at": "2024-08-01T10:50:15Z",
+      "id": 50
+    },
+    {
+      "userId": 1,
+      "name": "Another",
+      "surname": "One",
+      "created_at": "2024-08-01T10:50:44Z",
+      "updated_at": "2024-08-01T10:50:44Z",
+      "id": 51
+    },
+    {
+      "userId": 1,
+      "name": "Another",
+      "surname": "Second",
+      "created_at": "2024-08-01T10:51:13Z",
+      "updated_at": "2024-08-01T10:51:13Z",
+      "id": 52
+    },
+    {
+      "userId": 1,
+      "name": "Why ",
+      "surname": "Whymen",
+      "created_at": "2024-08-01T10:51:42Z",
+      "updated_at": "2024-08-01T10:51:42Z",
+      "id": 53
+    },
+    {
+      "name": "Homer",
+      "surname": "Simps",
+      "created_at": "2024-08-01T10:52:27Z",
+      "updated_at": "2024-08-01T14:01:04Z",
+      "id": 54
+    },
+    {
+      "userId": "1",
+      "name": "New",
+      "surname": "Author",
+      "created_at": "2024-08-01T10:57:34Z",
+      "updated_at": "2024-08-01T10:57:34Z",
+      "id": 55
+    },
+    {
+      "userId": 1,
+      "name": "Bart",
+      "surname": "Simpson",
+      "created_at": "2024-08-01T12:37:37Z",
+      "updated_at": "2024-08-01T12:37:37Z",
+      "id": 56
     }
   ],
   "posts": [
-    {
-<<<<<<< HEAD
-=======
-      "id": 23,
-      "title": "Twenty-Third Post",
-      "body": "This is the body of the twenty-third post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 13,
-      "userId": 1,
-      "created_at": "2024-05-05T12:22:00Z",
-      "updated_at": "2024-05-05T12:22:00Z"
-    },
-    {
->>>>>>> 14-delete-author
-      "id": 26,
-      "title": "Twenty-Sixth Post",
-      "body": "This is the body of the twenty-sixth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 16,
-      "userId": 1,
-      "created_at": "2024-05-05T12:25:00Z",
-      "updated_at": "2024-05-05T12:25:00Z"
-    },
     {
       "id": 27,
       "title": "Twenty-Seventh Post",
@@ -269,18 +273,6 @@
       "updated_at": "2024-05-05T12:32:00Z"
     },
     {
-<<<<<<< HEAD
-=======
-      "id": 35,
-      "title": "Thirty-Fifth Post",
-      "body": "This is the body of the thirty-fifth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 24,
-      "userId": 1,
-      "created_at": "2024-05-05T12:34:00Z",
-      "updated_at": "2024-05-05T12:34:00Z"
-    },
-    {
->>>>>>> 14-delete-author
       "id": 40,
       "title": "Fortieth Post",
       "body": "This is the body of the fortieth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
@@ -288,6 +280,135 @@
       "userId": 1,
       "created_at": "2024-05-05T12:39:00Z",
       "updated_at": "2024-05-05T12:39:00Z"
+    },
+    {
+      "title": "New Post",
+      "body": "This is the newly created post",
+      "authorId": 22,
+      "created_at": "2024-08-01T11:19:02Z",
+      "updated_at": "2024-08-01T11:19:02Z",
+      "id": 41
+    },
+    {
+      "title": "zx",
+      "body": "Psots",
+      "authorId": 19,
+      "created_at": "2024-08-01T12:59:35Z",
+      "updated_at": "2024-08-01T12:59:35Z",
+      "id": 42
+    },
+    {
+      "title": "Long Post",
+      "body": "afghjskdafaskljfhjaskldfjhskladfaskldfjasdfhklasdfklasdfaksldjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjaaaaaaaaaaaaaaaajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjafghjskdafaskljfhjaskldfjhskladfaskldfjasdfhklasdfklasdfaksldjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjaaaaaaaaaaaaaaaajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjfdkkslfkfkkfk",
+      "authorId": 20,
+      "created_at": "2024-08-01T13:06:31Z",
+      "updated_at": "2024-08-01T13:06:31Z",
+      "id": 43
+    },
+    {
+      "title": "New long one",
+      "body": "This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum length post This is a maximum ",
+      "authorId": 23,
+      "created_at": "2024-08-01T13:10:27Z",
+      "updated_at": "2024-08-01T13:10:27Z",
+      "id": 44
+    },
+    {
+      "title": "Classic Useless Post",
+      "body": "Helllow ",
+      "authorId": 54,
+      "created_at": "2024-08-01T13:25:52Z",
+      "updated_at": "2024-08-01T13:25:52Z",
+      "id": 45
+    },
+    {
+      "title": "New post",
+      "body": "THis is the new one",
+      "authorId": 23,
+      "created_at": "2024-08-01T13:26:26Z",
+      "updated_at": "2024-08-01T13:26:26Z",
+      "id": 46
+    },
+    {
+      "title": "Testing again",
+      "body": "some text",
+      "authorId": 17,
+      "created_at": "2024-08-01T13:28:36Z",
+      "updated_at": "2024-08-01T13:28:36Z",
+      "id": 47
+    },
+    {
+      "title": "TEsting once more",
+      "body": "more test",
+      "authorId": 50,
+      "created_at": "2024-08-01T13:28:55Z",
+      "updated_at": "2024-08-01T13:28:55Z",
+      "id": 48
+    },
+    {
+      "title": "Long poster",
+      "body": "asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg ",
+      "userId": 1,
+      "authorId": 35,
+      "created_at": "2024-08-01T13:48:27Z",
+      "updated_at": "2024-08-01T13:48:27Z",
+      "id": 49
+    },
+    {
+      "title": "Special symbols",
+      "body": "This should allow for special symbols: ./,@$^*%(^)__) OK it does das cool",
+      "authorId": 56,
+      "created_at": "2024-08-01T13:50:45Z",
+      "updated_at": "2024-08-01T13:50:45Z",
+      "id": 50
+    },
+    {
+      "title": "New third",
+      "body": "Third test",
+      "authorId": 17,
+      "created_at": "2024-08-01T13:56:29Z",
+      "updated_at": "2024-08-01T13:56:29Z",
+      "id": 51
+    },
+    {
+      "title": "Five",
+      "body": "asdag",
+      "authorId": 19,
+      "created_at": "2024-08-01T13:57:45Z",
+      "updated_at": "2024-08-01T13:57:45Z",
+      "id": 52
+    },
+    {
+      "title": "asdfg",
+      "body": "asfdgasdg",
+      "authorId": 19,
+      "created_at": "2024-08-01T13:58:31Z",
+      "updated_at": "2024-08-01T13:58:31Z",
+      "id": 53
+    },
+    {
+      "title": "sdfgsdfg",
+      "body": "sdfgdsfgsdfg",
+      "authorId": 30,
+      "created_at": "2024-08-01T13:59:14Z",
+      "updated_at": "2024-08-01T13:59:14Z",
+      "id": 54
+    },
+    {
+      "title": "sdfg",
+      "body": "Lower",
+      "authorId": 54,
+      "created_at": "2024-08-01T13:59:33Z",
+      "updated_at": "2024-08-01T13:59:33Z",
+      "id": 55
+    },
+    {
+      "title": "Naujas",
+      "body": "Nauajasd",
+      "authorId": 22,
+      "created_at": "2024-08-01T14:02:19Z",
+      "updated_at": "2024-08-01T14:02:19Z",
+      "id": 56
     }
   ]
 }

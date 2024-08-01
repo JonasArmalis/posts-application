@@ -37,12 +37,20 @@ const displayDate = computed(() => {
 </script>
 
 <template>
-    <div class="box">
-        <div v-if="post">
-            <p class="title is-3">{{ post.title }} </p>
+    <div class="container my-5">
+        <div v-if="post" class=" has-text-centered">
+            <p class="title is-3">{{ post.title }}</p>
             <p class="subtitle is-6">Posted by: {{ post.author.name }} {{ post.author.surname }}</p>
             <p class="content">{{ post.body }}</p>
             <time v-if="displayDate">{{ format(displayDate, 'yyyy-MM-dd h:mm a') }}</time>
         </div>
     </div>
 </template>
+
+<style scoped>
+.content {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+</style>
