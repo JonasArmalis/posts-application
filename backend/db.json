@@ -9,6 +9,17 @@
   ],
   "authors": [
     {
+<<<<<<< HEAD
+=======
+      "id": 13,
+      "name": "Benjamin",
+      "surname": "Miller",
+      "userId": 1,
+      "created_at": "2024-05-05T12:45:00Z",
+      "updated_at": "2024-05-05T12:45:00Z"
+    },
+    {
+>>>>>>> 14-delete-author
       "id": 16,
       "name": "Mia",
       "surname": "Taylor",
@@ -57,6 +68,17 @@
       "updated_at": "2024-05-05T13:35:00Z"
     },
     {
+<<<<<<< HEAD
+=======
+      "id": 24,
+      "name": "Zoe",
+      "surname": "Roberts",
+      "userId": 1,
+      "created_at": "2024-05-05T13:40:00Z",
+      "updated_at": "2024-05-05T13:40:00Z"
+    },
+    {
+>>>>>>> 14-delete-author
       "name": "Hi",
       "surname": "There",
       "created_at": "2024-07-30T14:01:50+03:00",
@@ -64,6 +86,16 @@
       "id": 26
     },
     {
+<<<<<<< HEAD
+=======
+      "name": " ",
+      "surname": " ",
+      "created_at": "2024-07-30T14:02:21+03:00",
+      "updated_at": "2024-07-30T14:02:21+03:00",
+      "id": 27
+    },
+    {
+>>>>>>> 14-delete-author
       "name": "dfg",
       "surname": "dfg",
       "created_at": "2024-07-30T14:51:10+03:00",
@@ -107,6 +139,7 @@
       "id": 36
     },
     {
+<<<<<<< HEAD
       "name": "sdfg",
       "surname": "sdfg",
       "created_at": "2024-07-31T17:05:03Z",
@@ -114,15 +147,74 @@
       "id": 40
     },
     {
+=======
+      "name": "Low",
+      "surname": "Baller",
+      "created_at": "2024-07-31T16:53:47Z",
+      "updated_at": "2024-07-31T16:53:47Z",
+      "id": 37
+    },
+    {
+      "name": "Kenedy",
+      "surname": "Brwon",
+      "created_at": "2024-07-31T16:53:58Z",
+      "updated_at": "2024-07-31T16:53:58Z",
+      "id": 38
+    },
+    {
+      "name": "lecker",
+      "surname": "Mason",
+      "created_at": "2024-07-31T17:03:40Z",
+      "updated_at": "2024-07-31T17:03:40Z",
+      "id": 39
+    },
+    {
+      "name": "sdfg",
+      "surname": "sdfg",
+      "created_at": "2024-07-31T17:05:03Z",
+      "updated_at": "2024-07-31T17:05:03Z",
+      "id": 40
+    },
+    {
+>>>>>>> 14-delete-author
       "name": "sdfg",
       "surname": "sdfg",
       "created_at": "2024-07-31T17:05:49Z",
       "updated_at": "2024-07-31T17:05:49Z",
       "id": 41
+<<<<<<< HEAD
+=======
+    },
+    {
+      "name": "Lewis",
+      "surname": "Dunk",
+      "created_at": "2024-07-31T17:07:50Z",
+      "updated_at": "2024-07-31T17:07:50Z",
+      "id": 42
+    },
+    {
+      "name": "Karla",
+      "surname": "Marla",
+      "created_at": "2024-07-31T17:10:01Z",
+      "updated_at": "2024-07-31T17:10:01Z",
+      "id": 43
+>>>>>>> 14-delete-author
     }
   ],
   "posts": [
     {
+<<<<<<< HEAD
+=======
+      "id": 23,
+      "title": "Twenty-Third Post",
+      "body": "This is the body of the twenty-third post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
+      "authorId": 13,
+      "userId": 1,
+      "created_at": "2024-05-05T12:22:00Z",
+      "updated_at": "2024-05-05T12:22:00Z"
+    },
+    {
+>>>>>>> 14-delete-author
       "id": 26,
       "title": "Twenty-Sixth Post",
       "body": "This is the body of the twenty-sixth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
@@ -177,6 +269,18 @@
       "updated_at": "2024-05-05T12:32:00Z"
     },
     {
+<<<<<<< HEAD
+=======
+      "id": 35,
+      "title": "Thirty-Fifth Post",
+      "body": "This is the body of the thirty-fifth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
+      "authorId": 24,
+      "userId": 1,
+      "created_at": "2024-05-05T12:34:00Z",
+      "updated_at": "2024-05-05T12:34:00Z"
+    },
+    {
+>>>>>>> 14-delete-author
       "id": 40,
       "title": "Fortieth Post",
       "body": "This is the body of the fortieth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",

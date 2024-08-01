@@ -3,6 +3,7 @@ import type { Author } from '@/interfaces/Author';
 import { createAuthor, getAllAuthors } from '@/services/AuthorService';
 import { useModalStore } from '@/stores/modalStore';
 import { useNotifyStore } from '@/stores/notification.store';
+import { ActionType } from '@/types/ActionType';
 import { useForm, useField } from 'vee-validate';
 import { onMounted, ref } from 'vue';
 import * as yup from 'yup';
@@ -39,7 +40,7 @@ const onSubmit = handleSubmit(async (values) => {
     try {
         await createAuthor(values.name, values.surname);
         notifyStore.notifySuccess("Success! Post has been created");
-        modalStore.setRequestSentStatus(true);
+        modalStore.setRequestSentStatus(ActionType.CREATE);
     } catch (error) {
         notifyStore.notifyError("Failed to create a post");
     }

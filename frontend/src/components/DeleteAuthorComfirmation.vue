@@ -3,6 +3,7 @@ import { useModalStore } from '@/stores/modalStore';
 import { deleteAuthor, getAuthor } from '@/services/AuthorService';
 import { useNotifyStore } from '@/stores/notification.store';
 import type { Author } from '@/interfaces/Author';
+import { ActionType } from '@/types/ActionType';
 
 const modalStore = useModalStore();
 const notifyStore = useNotifyStore();
@@ -14,7 +15,7 @@ const onDeleteButtonClick = async () => {
     try {
         await deleteAuthor(props.author.id);
         notifyStore.notifySuccess("Success! Author has been deleted");
-        modalStore.setRequestSentStatus(true);
+        modalStore.setRequestSentStatus(ActionType.DELETE);
     } catch (error) {
         notifyStore.notifyError("Failed to delete author, please try again later");
     }
@@ -30,7 +31,9 @@ const onCancelButtonClick = async () => {
 
 <template>
     <div >
-        <p class="subtitle is-6">Are you sure you want to delete this author?</p>
+        <p class="subtitle is-4 mb-4">
+            <strong>Are you sure you want to delete this author?</strong>
+            </p>
         <p class="title is-5">{{ props.author.name }} {{ props.author.surname }}</p>
         <div class="buttons is-centered">
             <button @click="onDeleteButtonClick" class="button is-danger">Yes, Delete</button>

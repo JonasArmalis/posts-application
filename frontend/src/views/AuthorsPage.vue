@@ -9,6 +9,8 @@ import PaginationMenu from '@/components/PaginationMenu.vue';
 import { useModalStore } from '@/stores/modalStore';
 import CreateAuthorForm from '@/components/forms/CreateAuthorForm.vue';
 import { useAuthStore } from '@/stores/authStore';
+import { ActionType } from '@/types/ActionType';
+import { number } from 'yup';
 
 const notifyStore = useNotifyStore();
 const limit = 5;
@@ -27,8 +29,10 @@ const fetchAuthors = async () => {
         authors.value = data;
         authorAmount.value = totalAmount;
         if (authors.value.length == 0) {
-            infoMessage.value = "No Authors have been found with this search criteria";
+            infoMessage.value = "No Authors have been found";
             notifyStore.notifyInfo(infoMessage.value);
+        } else {
+            infoMessage.value = undefined;
         }
     } catch (error) {
         authorAmount.value = undefined;
@@ -52,7 +56,10 @@ const handleSearch = (input: String) => {
 onMounted(fetchAuthors);
 
 watch(() => modalStore.state.requestSent, (requestSent) => {
-    if (requestSent) {  
+    if (requestSent !== undefined){
+        if (requestSent === ActionType.DELETE) {
+            currentPage.value = 1;
+        }
         fetchAuthors();
     }
 });
