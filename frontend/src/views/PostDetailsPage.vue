@@ -9,6 +9,8 @@ import { useAuthStore } from '@/stores/authStore';
 import EditPostForm from '@/components/forms/EditPostForm.vue';
 import { useModalStore } from '@/stores/modalStore';
 import { ActionType } from '@/types/ActionType';
+import DeletePostConfirmationForm from '@/components/forms/DeletePostConfirmationForm.vue';
+import router from '@/router';
 
 const route = useRoute();
 const notifyStore = useNotifyStore();
@@ -36,6 +38,9 @@ watch(() => modalStore.state.requestSent, (requestSent) => {
         if (requestSent === ActionType.EDIT) {
              fetchPost(Number(route.params.id))
         }
+        if (requestSent === ActionType.DELETE) {
+            router.push("/");
+        }
     }
 });
 
@@ -48,6 +53,14 @@ const displayDate = computed(() => {
 });
 
 const onDeleteButtonClick = async () => {
+    try {
+        if (route.params.id) {
+            fetchPost(Number(route.params.id));
+        }
+        modalStore.openModal(DeletePostConfirmationForm, 'Confirm Post Deletion', { post: post })
+    } catch (error) {
+        notifyStore.notifyError("Failed to get post, please try again later");
+    }
 }
 
 const onEditButtonClick = async () => {

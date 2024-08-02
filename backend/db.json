@@ -113,6 +113,13 @@
       "id": 41
     },
     {
+      "name": "New",
+      "surname": "Author",
+      "created_at": "2024-08-01T10:36:27Z",
+      "updated_at": "2024-08-01T10:36:27Z",
+      "id": 42
+    },
+    {
       "name": "James",
       "surname": "Smith",
       "created_at": "2024-08-01T10:37:47Z",
@@ -165,6 +172,14 @@
     },
     {
       "userId": 1,
+      "name": "New",
+      "surname": "Author",
+      "created_at": "2024-08-01T10:50:15Z",
+      "updated_at": "2024-08-01T10:50:15Z",
+      "id": 50
+    },
+    {
+      "userId": 1,
       "name": "Another",
       "surname": "One",
       "created_at": "2024-08-01T10:50:44Z",
@@ -195,6 +210,14 @@
       "id": 54
     },
     {
+      "userId": "1",
+      "name": "New",
+      "surname": "Author",
+      "created_at": "2024-08-01T10:57:34Z",
+      "updated_at": "2024-08-01T10:57:34Z",
+      "id": 55
+    },
+    {
       "userId": 1,
       "name": "Bart",
       "surname": "Simpson",
@@ -205,31 +228,22 @@
   ],
   "posts": [
     {
-      "id": 27,
-      "title": "Post Mayb",
-      "body": "It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria. longThis is the body of the twenty-seventh post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria. longThis is the body of the twenty-seventh post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria. longThis is the body of the twenty-seventh post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria. longThis is the body of the twenty-seventh post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria. longThis is the body of the twenty-seventh post. It contains more than twenty five words to fulfill the niveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      "authorId": 17,
-      "userId": 1,
-      "created_at": "2024-05-05T12:26:00Z",
-      "updated_at": "2024-08-01T16:10:55Z"
-    },
-    {
       "id": 29,
-      "title": "Twenty-Ninth Post nine nine Twenty-Ninth Post nine",
-      "body": "This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria. This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just aaaaaaaa",
+      "title": "Twenty-Ninth Post",
+      "body": "This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
       "authorId": 19,
       "userId": 1,
       "created_at": "2024-05-05T12:28:00Z",
-      "updated_at": "2024-08-01T15:27:14Z"
+      "updated_at": "2024-05-05T12:28:00Z"
     },
     {
       "id": 30,
-      "title": "Thirtieth Poster",
+      "title": "Thirtieth Post",
       "body": "This is the body of the thirtieth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
       "authorId": 20,
       "userId": 1,
       "created_at": "2024-05-05T12:29:00Z",
-      "updated_at": "2024-08-01T15:06:33Z"
+      "updated_at": "2024-05-05T12:29:00Z"
     },
     {
       "id": 32,
@@ -242,21 +256,12 @@
     },
     {
       "id": 33,
-      "title": " 12",
-      "body": "This is the body of the post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
+      "title": "Thirty-Third Post",
+      "body": "This is the body of the thirty-third post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
       "authorId": 23,
       "userId": 1,
       "created_at": "2024-05-05T12:32:00Z",
-      "updated_at": "2024-08-01T15:22:49Z"
-    },
-    {
-      "id": 40,
-      "title": "Fortieth Post",
-      "body": "This is the body of the fortieth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 20,
-      "userId": 1,
-      "created_at": "2024-05-05T12:39:00Z",
-      "updated_at": "2024-05-05T12:39:00Z"
+      "updated_at": "2024-05-05T12:32:00Z"
     },
     {
       "title": "New Post",
@@ -315,6 +320,14 @@
       "id": 47
     },
     {
+      "title": "TEsting once more",
+      "body": "more test",
+      "authorId": 50,
+      "created_at": "2024-08-01T13:28:55Z",
+      "updated_at": "2024-08-01T13:28:55Z",
+      "id": 48
+    },
+    {
       "title": "Long poster",
       "body": "asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg asfgdfg ",
       "userId": 1,
@@ -332,11 +345,11 @@
       "id": 50
     },
     {
-      "title": "third",
+      "title": "New third",
       "body": "Third test",
       "authorId": 17,
       "created_at": "2024-08-01T13:56:29Z",
-      "updated_at": "2024-08-01T15:17:59Z",
+      "updated_at": "2024-08-01T13:56:29Z",
       "id": 51
     },
     {
@@ -370,38 +383,6 @@
       "created_at": "2024-08-01T13:59:33Z",
       "updated_at": "2024-08-01T13:59:33Z",
       "id": 55
-    },
-    {
-      "title": "Senas",
-      "body": "Nauajasd",
-      "authorId": 22,
-      "created_at": "2024-08-01T14:02:19Z",
-      "updated_at": "2024-08-01T15:13:26Z",
-      "id": 56
-    },
-    {
-      "title": "Post titles should support special chars!!!!!!!!!",
-      "body": "This is a petition for posts to support special characters!",
-      "authorId": 17,
-      "created_at": "2024-08-01T14:23:45Z",
-      "updated_at": "2024-08-01T15:20:14Z",
-      "id": 57
-    },
-    {
-      "title": "Yesssssssssssssssssssssssssssssssssssssssssssssss",
-      "body": "Is it really required?",
-      "authorId": 20,
-      "created_at": "2024-08-01T15:24:48Z",
-      "updated_at": "2024-08-01T15:25:02Z",
-      "id": 58
-    },
-    {
-      "title": "Jo",
-      "body": "kramer lasdfl;jasldf",
-      "authorId": 20,
-      "created_at": "2024-08-01T16:12:01Z",
-      "updated_at": "2024-08-01T16:12:15Z",
-      "id": 59
     }
   ]
 }

@@ -8,6 +8,7 @@ import { useNotifyStore } from "@/stores/notification.store";
 import { format } from "date-fns";
 import { computed } from "vue";
 import EditPostForm from "./forms/EditPostForm.vue";
+import DeletePostConfirmationForm from "./forms/DeletePostConfirmationForm.vue";
 
 const modalStore = useModalStore();
 const notifyStore = useNotifyStore();
@@ -28,8 +29,13 @@ const redirectToPost = () => {
 };
 
 const onDeleteButtonClick = async () => {
+    try {
+        const post = await getPost(props.post.id);
+        modalStore.openModal(DeletePostConfirmationForm, 'Confirm Post Deletion', { post: post })
+    } catch (error) {
+        notifyStore.notifyError("Failed to get author, please try again later");
+    }
 }
-
 const onEditButtonClick = async () => {
     try {
         const post = await getPost(props.post.id);

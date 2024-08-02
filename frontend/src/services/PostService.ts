@@ -14,7 +14,6 @@ const getAllPosts = async (page: number, limit: number, searchValue: String): Pr
       q: searchValue
     }
   })
-
   return {
     data: response.data,
     totalAmount: response.headers['x-total-count']
@@ -70,4 +69,15 @@ const editPost = async (title: string, content: string, id: number): Promise<Pos
   return response.data
 }
 
-export { editPost, getAllPosts, getPost, createPost }
+const deletePost = async (id: number): Promise<void> => {
+  const authStore = useAuthStore()
+  await httpClient.delete<Post>(`${END_POINT}/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${authStore.accessToken}`
+      }
+    }
+  )
+}
+
+export {deletePost, editPost, getAllPosts, getPost, createPost }
