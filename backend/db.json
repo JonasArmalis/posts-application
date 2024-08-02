@@ -216,53 +216,9 @@
       "created_at": "2024-08-01T10:57:34Z",
       "updated_at": "2024-08-01T10:57:34Z",
       "id": 55
-    },
-    {
-      "userId": 1,
-      "name": "Bart",
-      "surname": "Simpson",
-      "created_at": "2024-08-01T12:37:37Z",
-      "updated_at": "2024-08-01T12:37:37Z",
-      "id": 56
     }
   ],
   "posts": [
-    {
-      "id": 29,
-      "title": "Twenty-Ninth Post",
-      "body": "This is the body of the twenty-ninth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 19,
-      "userId": 1,
-      "created_at": "2024-05-05T12:28:00Z",
-      "updated_at": "2024-05-05T12:28:00Z"
-    },
-    {
-      "id": 30,
-      "title": "Thirtieth Post",
-      "body": "This is the body of the thirtieth post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 20,
-      "userId": 1,
-      "created_at": "2024-05-05T12:29:00Z",
-      "updated_at": "2024-05-05T12:29:00Z"
-    },
-    {
-      "id": 32,
-      "title": "Thirty-Second Post",
-      "body": "This is the body of the thirty-second post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 22,
-      "userId": 1,
-      "created_at": "2024-05-05T12:31:00Z",
-      "updated_at": "2024-05-05T12:31:00Z"
-    },
-    {
-      "id": 33,
-      "title": "Thirty-Third Post",
-      "body": "This is the body of the thirty-third post. It contains more than twenty five words to fulfill the requirement of the task. This is just a filler text to meet the criteria.",
-      "authorId": 23,
-      "userId": 1,
-      "created_at": "2024-05-05T12:32:00Z",
-      "updated_at": "2024-05-05T12:32:00Z"
-    },
     {
       "title": "New Post",
       "body": "This is the newly created post",
@@ -270,14 +226,6 @@
       "created_at": "2024-08-01T11:19:02Z",
       "updated_at": "2024-08-01T11:19:02Z",
       "id": 41
-    },
-    {
-      "title": "zx",
-      "body": "Psots",
-      "authorId": 19,
-      "created_at": "2024-08-01T12:59:35Z",
-      "updated_at": "2024-08-01T12:59:35Z",
-      "id": 42
     },
     {
       "title": "Long Post",
@@ -335,14 +283,6 @@
       "created_at": "2024-08-01T13:48:27Z",
       "updated_at": "2024-08-01T13:48:27Z",
       "id": 49
-    },
-    {
-      "title": "Special symbols",
-      "body": "This should allow for special symbols: ./,@$^*%(^)__) OK it does das cool",
-      "authorId": 56,
-      "created_at": "2024-08-01T13:50:45Z",
-      "updated_at": "2024-08-01T13:50:45Z",
-      "id": 50
     },
     {
       "title": "New third",

@@ -44,20 +44,12 @@ watch(() => modalStore.state.requestSent, (requestSent) => {
     }
 });
 
-const displayDate = computed(() => {
-    if (!post.value) {
-        return '';
-    }
-    const { updated_at, created_at } = post.value;
-    return updated_at >= created_at ? updated_at : created_at;
-});
-
 const onDeleteButtonClick = async () => {
     try {
-        if (route.params.id) {
-            fetchPost(Number(route.params.id));
+        if (post.value) {
+            const postToDelete = await getPost(post.value.id);
+            modalStore.openModal(DeletePostConfirmationForm, 'Confirm Post Deletion', { post: postToDelete })
         }
-        modalStore.openModal(DeletePostConfirmationForm, 'Confirm Post Deletion', { post: post })
     } catch (error) {
         notifyStore.notifyError("Failed to get post, please try again later");
     }
@@ -66,14 +58,21 @@ const onDeleteButtonClick = async () => {
 const onEditButtonClick = async () => {
     try {
         if (route.params.id) {
-            fetchPost(Number(route.params.id));
+            const postToEdit = fetchPost(Number(route.params.id));
+            modalStore.openModal(EditPostForm, 'Edit post details', { post: postToEdit })
         }
-        modalStore.openModal(EditPostForm, 'Edit post details', { post: post })
     } catch (error) {
         notifyStore.notifyError("Failed to get post, please try again later");
     }
 }
 
+const displayDate = computed(() => {
+    if (!post.value) {
+        return '';
+    }
+    const { updated_at, created_at } = post.value;
+    return updated_at >= created_at ? updated_at : created_at;
+});
 
 </script>
 

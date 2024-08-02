@@ -30,6 +30,8 @@ const fetchPosts = async () => {
     if (posts.value.length == 0) {
       infoMessage.value = "No Posts have been found with this search criteria";
       notifyStore.notifyInfo(infoMessage.value);
+    } else {
+      infoMessage.value = undefined;
     }
   } catch (error) {
     postAmount.value = undefined;

@@ -33,7 +33,7 @@ const onDeleteButtonClick = async () => {
         const post = await getPost(props.post.id);
         modalStore.openModal(DeletePostConfirmationForm, 'Confirm Post Deletion', { post: post })
     } catch (error) {
-        notifyStore.notifyError("Failed to get author, please try again later");
+        notifyStore.notifyError("Failed to get post, please try again later");
     }
 }
 const onEditButtonClick = async () => {
