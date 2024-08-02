@@ -101,6 +101,9 @@ onUnmounted(() => {
                                     @click="selectAuthor(author)">
                                     {{ author.name }} {{ author.surname }}
                                 </a>
+                                <a v-if="authors.length < 1" class="dropdown-item">
+                                    No authors available, please create an author first
+                                </a>
                             </div>
                         </div>
                     </div>
