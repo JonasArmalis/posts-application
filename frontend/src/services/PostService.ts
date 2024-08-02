@@ -1,5 +1,7 @@
 import httpClient from './HttpClient'
 import type { Post } from '../interfaces/Post'
+import { format } from 'date-fns'
+import { useAuthStore } from '@/stores/authStore'
 
 const END_POINT = '/posts'
 
@@ -12,7 +14,6 @@ const getAllPosts = async (page: number, limit: number, searchValue: String): Pr
       q: searchValue
     }
   })
-
   return {
     data: response.data,
     totalAmount: response.headers['x-total-count']
@@ -28,4 +29,55 @@ const getPost = async (id: Number): Promise<Post> => {
   return response.data
 }
 
-export { getAllPosts, getPost }
+const createPost = async (title: string, content: string, authorId: number): Promise<Post> => {
+  const authStore = useAuthStore()
+  const response = await httpClient.post<Post>(
+    END_POINT,
+    {
+      title: title,
+      body: content,
+      userId: authStore.userId,
+      authorId: authorId,
+      created_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'"),
+      updated_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${authStore.accessToken}`
+      }
+    }
+  )
+  return response.data
+}
+
+
+const editPost = async (title: string, content: string, id: number): Promise<Post> => {
+  const authStore = useAuthStore()
+  const response = await httpClient.patch<Post>(
+    `${END_POINT}/${id}`,
+    {
+      title: title,
+      body: content,
+      updated_at: format(Date.now(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${authStore.accessToken}`
+      }
+    }
+  )
+  return response.data
+}
+
+const deletePost = async (id: number): Promise<void> => {
+  const authStore = useAuthStore()
+  await httpClient.delete<Post>(`${END_POINT}/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${authStore.accessToken}`
+      }
+    }
+  )
+}
+
+export {deletePost, editPost, getAllPosts, getPost, createPost }

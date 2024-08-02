@@ -12,7 +12,7 @@ const notifyStore = useNotifyStore();
 const modalStore = useModalStore();
 
 const props = defineProps<{
-    author: Author  
+    author: Author
 }>();
 
 if (!props.author) {
@@ -24,17 +24,19 @@ const { handleSubmit, resetForm, values } = useForm({
     initialValues: {
         name: props.author.name,
         surname: props.author.surname
-    }   
+    }
 });
 
-const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');
-const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField('surname');
+const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField<string>('name');
+const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField<string>('surname');
 
 const hasChanges = computed(() => {
     return values.name != props.author.name || values.surname != props.author.surname;
 });
 
 const onSubmit = handleSubmit(async (values) => {
+    values.name = values.name.trim();
+    values.surname = values.surname.trim();
     if (hasChanges.value) {
         try {
             await editAuthor(values.name, values.surname, props.author.id);
@@ -54,7 +56,7 @@ const onSubmit = handleSubmit(async (values) => {
     <div>
         <form @submit="onSubmit" no-validate>
             <div class="field">
-                <label class="label">Name</label>
+                <label class="label">Title</label>
                 <div class="control">
                     <input v-model="name" @blur="nameBlur" class="input" type="text" placeholder="e.g. John">
                 </div>

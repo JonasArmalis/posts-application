@@ -5,9 +5,9 @@ import { format } from "date-fns";
 import EditAuthorForm from './forms/EditAuthorForm.vue';
 import { computed } from 'vue';
 import { useAuthStore } from '@/stores/authStore';
-import { deleteAuthor, getAuthor } from '@/services/AuthorService';
+import { getAuthor } from '@/services/AuthorService';
 import { useNotifyStore } from '@/stores/notification.store';
-import DeleteAuthorComfirmation from './DeleteAuthorComfirmation.vue';
+import DeleteAuthorComfirmationForm from './forms/DeleteAuthorComfirmationForm.vue';
 
 
 const modalStore = useModalStore();
@@ -20,7 +20,7 @@ const props = defineProps<{
 const onDeleteButtonClick = async () => {
     try {
         const author = await getAuthor(props.author.id);
-        modalStore.openModal(DeleteAuthorComfirmation, 'Confirm Author Deletion', {author: author})
+        modalStore.openModal(DeleteAuthorComfirmationForm, 'Confirm Author Deletion', {author: author})
     } catch (error) {
         notifyStore.notifyError("Failed to get author, please try again later");
     }

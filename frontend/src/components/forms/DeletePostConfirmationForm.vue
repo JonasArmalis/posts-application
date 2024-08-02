@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { useModalStore } from '@/stores/modalStore';
-import { deleteAuthor, getAuthor } from '@/services/AuthorService';
 import { useNotifyStore } from '@/stores/notification.store';
-import type { Author } from '@/interfaces/Author';
 import { ActionType } from '@/types/ActionType';
+import type { Post } from '@/interfaces/Post';
+import { deletePost } from '@/services/PostService';
 
 const modalStore = useModalStore();
 const notifyStore = useNotifyStore();
 const props = defineProps<{
-    author: Author
+    post: Post
 }>();
 
 const onDeleteButtonClick = async () => {
     try {
-        await deleteAuthor(props.author.id);
-        notifyStore.notifySuccess("Success! Author has been deleted");
+        await deletePost(props.post.id);
+        notifyStore.notifySuccess("Success! Post has been deleted");
         modalStore.setRequestSentStatus(ActionType.DELETE);
     } catch (error) {
-        notifyStore.notifyError("Failed to delete author, please try again later");
+        notifyStore.notifyError("Failed to delete post, please try again later");
     }
     modalStore.closeModal();
 }
@@ -30,11 +30,11 @@ const onCancelButtonClick = async () => {
 </script>
 
 <template>
-    <div >
+    <div>
         <p class="subtitle is-4 mb-4">
-            <strong>Are you sure you want to delete this author?</strong>
-            </p>
-        <p class="title is-5">{{ props.author.name }} {{ props.author.surname }}</p>
+            <strong>Are you sure you want to delete this post?</strong>
+        </p>
+        <p class="title is-5">{{ props.post.title }}</p>
         <div class="buttons is-centered">
             <button @click="onDeleteButtonClick" class="button is-danger">Yes, Delete</button>
             <button @click="onCancelButtonClick" class="button is-info">Cancel</button>

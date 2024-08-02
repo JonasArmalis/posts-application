@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
 import type { Author } from '@/interfaces/Author';
-import { getAllAuthors } from '../services/AuthorService';
+import { getAuthorsByPage } from '../services/AuthorService';
 import { useNotifyStore } from '@/stores/notification.store';
 import AuthorCard from '@/components/AuthorCard.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import PaginationMenu from '@/components/PaginationMenu.vue';
 import { useModalStore } from '@/stores/modalStore';
-import AuthorForm from '@/components/forms/CreateAuthorForm.vue';
+import CreateAuthorForm from '@/components/forms/CreateAuthorForm.vue';
 import { useAuthStore } from '@/stores/authStore';
 import { ActionType } from '@/types/ActionType';
-import { number } from 'yup';
 
 const notifyStore = useNotifyStore();
 const limit = 5;
@@ -25,7 +24,7 @@ const authStore = useAuthStore();
 
 const fetchAuthors = async () => {
     try {
-        const { data, totalAmount } = await getAllAuthors(currentPage.value, limit, searchValue.value);
+        const { data, totalAmount } = await getAuthorsByPage(currentPage.value, limit, searchValue.value);
         authors.value = data;
         authorAmount.value = totalAmount;
         if (authors.value.length == 0) {
@@ -69,7 +68,7 @@ watch(() => modalStore.state.requestSent, (requestSent) => {
 <template>
     <div style="padding: 20px;">
         <SearchBar @search="handleSearch" />
-        <button v-if="authStore.isUserLoggedIn" @click="modalStore.openModal(AuthorForm, 'Create a new author')"
+        <button v-if="authStore.isUserLoggedIn" @click="modalStore.openModal(CreateAuthorForm, 'Create a new author')"
             class="button is-link">Create Author</button>
         <div v-if="infoMessage">
             <h1> <strong> {{ infoMessage }} </strong></h1>

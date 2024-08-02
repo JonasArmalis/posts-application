@@ -10,22 +10,24 @@ const { handleSubmit, resetForm } = useForm({
     validationSchema: authorValidationSchema,
 });
 
-const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');
-const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField('surname');
+const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField<string>('name');
+const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField<string>('surname');
 
 const modalStore = useModalStore();
 const notifyStore = useNotifyStore();
 
 const onSubmit = handleSubmit(async (values) => {
     try {
+        values.name = values.name.trim();
+        values.surname = values.surname.trim();
         await createAuthor(values.name, values.surname);
         notifyStore.notifySuccess("Success! Author has been created");
         modalStore.setRequestSentStatus(ActionType.CREATE);
+        modalStore.closeModal();
+        resetForm();
     } catch (error) {
         notifyStore.notifyError("Failed to create an author");
     }
-    modalStore.closeModal();
-    resetForm();
 });
 
 </script>
