@@ -57,8 +57,8 @@ const onDeleteButtonClick = async () => {
 
 const onEditButtonClick = async () => {
     try {
-        if (route.params.id) {
-            const postToEdit = fetchPost(Number(route.params.id));
+        if (post.value) {
+            const postToEdit = await getPost(post.value.id);
             modalStore.openModal(EditPostForm, 'Edit post details', { post: postToEdit })
         }
     } catch (error) {
