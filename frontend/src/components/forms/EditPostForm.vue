@@ -27,7 +27,7 @@ const { handleSubmit, resetForm, values } = useForm({
     }
 });
 
-const { value: title, errorMessage: titleError, handleBlur: titleBlur } = useField('title');
+const { value: title, errorMessage: titleError, handleBlur: titleBlur } = useField<string>('title');
 const { value: content, errorMessage: contentError, handleBlur: contentBlur } = useField<string>('content');
 
 const hasChanges = computed(() => {
@@ -35,6 +35,8 @@ const hasChanges = computed(() => {
 });
 
 const onSubmit = handleSubmit(async (values) => {
+    values.title = values.title.trim();
+    values.content = values.content.trim();
     if (hasChanges.value) {
         try {
             await editPost(values.title, values.content, props.post.id);

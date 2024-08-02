@@ -24,16 +24,18 @@ const { value: title, errorMessage: titleError, handleBlur: titleBlur } = useFie
 const { value: content, errorMessage: contentError, handleBlur: contentBlur } = useField<string>('content');
 const { value: authorId, errorMessage: authorError } = useField<number>('authorId');
 
-const onSubmit = handleSubmit(async () => {
+const onSubmit = handleSubmit(async (values) => {
     try {
-        await createPost(title.value, content.value, authorId.value);
+        values.title = values.title.trim();
+        values.content = values.content.trim();
+        await createPost(values.title, values.content, values.authorId);
         notifyStore.notifySuccess("Success! Post has been created");
         modalStore.setRequestSentStatus(ActionType.CREATE);
+        modalStore.closeModal();
+        resetForm();
     } catch (error) {
         notifyStore.notifyError("Failed to create a post");
     }
-    modalStore.closeModal();
-    resetForm();
 });
 
 const fetchAuthors = async () => {

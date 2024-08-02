@@ -27,14 +27,16 @@ const { handleSubmit, resetForm, values } = useForm({
     }
 });
 
-const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField('name');
-const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField('surname');
+const { value: name, errorMessage: nameError, handleBlur: nameBlur } = useField<string>('name');
+const { value: surname, errorMessage: surnameError, handleBlur: surnameBlur } = useField<string>('surname');
 
 const hasChanges = computed(() => {
     return values.name != props.author.name || values.surname != props.author.surname;
 });
 
 const onSubmit = handleSubmit(async (values) => {
+    values.name = values.name.trim();
+    values.surname = values.surname.trim();
     if (hasChanges.value) {
         try {
             await editAuthor(values.name, values.surname, props.author.id);
